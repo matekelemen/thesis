@@ -7,11 +7,29 @@
 %
 %______________________________________________________________________________
 
-What problem does the SEM address?
-What are the fundamental differences between SEM and standard FEM?
-What are its advantages/disadvantages?
-Where is it used?
-Where should it not be used?
+As pointed out in section \ref{section:wave_equation}, a diagonal mass matrix $\mathbf M$ is essential to fully exploit the efficiency of explicit time integration schemes. A well-established approach that yields an inherently diagonal consistent mass matrix, is the Spectral Element Method (SEM) \cite{Maggio1994}. Based on the p-version of the FEM, the SEM relies on a specific choice of ansatz space and quadrature rule for its appealing properties.
+
+Using the same line of thought as for the simplification of the moment fitting equations described in section \ref{section:fcm}, Lagrange polynomials defined on a set of Gauss-Lobatto points are used as basis functions. Accordingly, the quadrature rule for integrating the mass matrix is the Gauss-Lobatto scheme of matching order, which means that the integration points coincide with those used for the definition of the basis functions. As a result, the product of mixed ansatz functions vanish at all integration points, leading to a diagonal mass matrix.
+
+\begin{equation}
+	N_i(\boldsymbol{\xi}_k)N_j(\boldsymbol{\xi}_k) = 0 \ \ \forall i \neq j \ \ \forall k \in \{1..m\}
+\end{equation}
+
+\begin{equation}
+	M_{ij} = \int_{\Omega} N_i \rho N_j d\mathbf x
+	\approx
+	det(\mathbf J) \sum_{k=1}^m N_i(\boldsymbol{\xi}_k) \rho N_j(\boldsymbol{\xi}_k) w_k
+	=
+	\begin{bmatrix}
+		M_{11} & & \\
+		& \ddots & \\
+		& & M_{nn} \\
+	\end{bmatrix}
+\end{equation}
+
+where $\mathbf J$ is the Jacobian facilitating the change of variables from $\mathbf x$ to $\boldsymbol{\xi}$.
+
+Gauss-Lobatto points are chosen in particular because they include the limits of the integration domain, ensuring that all except one ansatz functions vanish on each border. This property is essential for FE-based methods to ensure the continuity between elements, allow the blending of specific ansatz functions to exactly capture certain types of boundaries, and strongly enforce boundary conditions.
 
 Main ideas to go through:
 

@@ -38,7 +38,7 @@ A.~D{\"u}ster, J.~Parvizian, Z.~Yang, and E.~Rank.
 \newblock {\em Computer Methods in Applied Mechanics and Engineering},
   197(45-48):3768 -- 3782, 2008.
   
-\bibitem[JAE07]{Jamshid2007}
+\bibitem[PDR07]{Parvizian2007}
 J.~Parvizian, A.~D{\"u}ster, E.~Rank.
 \newblock Finite cell method h- and p-extension for embedded domain problems in solid mechanics
 \newblock {\em Computational Mechanics}, 41(121-133), 2007
@@ -60,6 +60,11 @@ B.~M{\"u}ller, F.~Kummer, M.~Oberlack.
 \bibitem[JHD15]{Joulaian2015}
 J.~Meysam, S.~Hubrich, A.~D{~"u}ster.
 \newblock Numerical integration of discontinuities on arbitrary domains based on moment fitting
+
+\bibitem[MQ94]{Maggio1994}
+F.~Maggio, A.~Quarteroni.
+\newblock Acoustic wave simulation by spectral methods
+\newblock {\em East-West J. Numer. Math.}, 2 (129-150), 1994
   
 \bibitem[HRZ76]{Hinton1976}
 E.~Hinton, T.~Rock, and O.C.~Zienkiewicz.

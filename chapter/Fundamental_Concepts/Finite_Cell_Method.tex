@@ -47,7 +47,7 @@ physical domain $\Omega_p \subset \Omega$ (also called the embedded domain) in s
 
 
 The indicator function $\alpha(\mathbf x)$ is used as a coefficient for material properties, effectively "softening" the material in the fictitious domain such that the influence of its solution field on that of the physical domain becomes negligible.
-Ideally, $\beta \to \infty$ leading to $\alpha (\mathbf x) \to 0$ in the fictitious domain, but is usually limited to $\beta \in [3,10]$ in order to avoid ill-conditioned structural matrices \cite{Jamshid2007}.
+Ideally, $\beta \to \infty$ leading to $\alpha (\mathbf x) \to 0$ in the fictitious domain, but is usually limited to $\beta \in [3,10]$ in order to avoid ill-conditioned structural matrices \cite{Parvizian2007}.
 
 \begin{equation} \label{eq:fictitious_material_properties}
 	\begin{array}{ll}
@@ -157,3 +157,5 @@ The integrals on the right hand side of \ref{eq:moment_fitting_simplified} can b
 Furthermore, this lower bound assumes that the integrals on the right hand side of \ref{eq:moment_fitting_simplified} are computed exactly, which in turn implies that the geometry of the physical domain can be captured exactly by the applied space partitioning tree. This is rarely the case, but considering the fact that adaptive integration suffers from this issue as well, it is not regarded as a disadvantage of moment fitting. The reduced accuracy of the quadrature rule can be addressed by increasing the integration order of the underlying scheme.
 
 % TODO: what's a good figure for moment fitting?
+
+Working on a non-boundary conforming mesh introduces numerous other challenges, such as the enforcement of boundary conditions, but since a detailed literature is available on them \cite{Duester2007, Parvizian2007} and are handled identically for the SCM, they are not covered in this thesis.
