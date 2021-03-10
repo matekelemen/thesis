@@ -1,0 +1,67 @@
+% !TEX root =  thesis.tex
+\documentclass[11pt,twoside,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%f�r das Einbinden von Bildern und Tabellen
+\usepackage{booktabs} 		%f�r tolle tabellen
+\usepackage{threeparttable}
+\usepackage{longtable}
+\usepackage[normal,small,bf]{caption} %erm�glicht mehrzeilige Bildunterschriften use [hang] f�r einger�ckte Bildunterschrift
+\usepackage{psfrag}
+%f�r die Bibliography
+\usepackage{natbib}		% more flexibility with citations
+\usepackage{ifpdf}
+\usepackage{footnote}
+%Verwendung von Farben
+\usepackage{xcolor}
+%bedruckten Bereich der Seite anpassen
+\usepackage[left=3.0cm, right=2.5cm, top=2.5cm,bottom=2.0cm,includeheadfoot]{geometry}
+% Formatierung Kapitelueberschriften
+\usepackage{titlesec}
+\usepackage{framed}
+\usepackage{array}
+%\titleformat{?�berschriftenklasse?}[Absatzformatierung?]{?Textformatierung?} {?Nummerierung?}{?Abstand zwischen Nummerierung und �berschriftentext?}{?Code vor der �berschrift?}[?Code nach der �berschrift?]
+%\titleformat{\chapter}[hang]{\huge\bfseries}{\thechapter\quad}{0pt}{}
+%\titlespacing{?�berschriftenklasse?}{?Linker Einzug?}{?Platz oberhalb?}{?Platz unterhalb?}[?rechter Einzug?]
+%\titlespacing{\chapter}{0pt}{0em}{6pt}
+%----------------------------------------------------------------------------------------------------------------------------------------------
+%Stil der Seite
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{%
+	\fancyhf{} % clear all header and footer fields
+	\fancyhead[EL,OR]{\slshape \thepage} % except the center
+	\fancyhead[ER]{\slshape \leftmark}
+	\fancyhead[OL]{\slshape \rightmark}
+}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}{}}
+%
+\pagestyle{empty}%f�r die Titelseiten zumindest, am Ende der Titelseite umschalten auf \pagestyle{fancyplain}
+\pagenumbering{Roman}%f�r die Titelseiten zumindest, am Ende der Titelseite umschalten auf \pagenumbering{arabic}
+%------------------------je nach Kommando (pdflatex / latex) jeweilige Paketeinbindung-----------------------------
+\definecolor{linkblue}{rgb}{0,0.1,0.6}
+\definecolor{citegreen}{rgb}{0,0.25,0.15}%{0.1,0.5,0.4}%{0.125,0.6,0.5}
+\definecolor{linkred}{rgb}{0.8,0,0.005}%{0.6,0,0.1}
+\definecolor{mailviolet}{rgb}{0.3,0,0.35}%{0.6,0,0.1}
+\definecolor{tumblue}{rgb}{0,0.396,0.741}
+\ifpdf %pdflatex
+    \usepackage[pdftex]{graphicx}
+    \pdfcompresslevel=1
+    \pdfimageresolution=300
+    \DeclareGraphicsExtensions{.png}
+    \graphicspath{{./pictures/}}
+    \usepackage[hyperindex,pdftex,colorlinks=true,linkcolor=tumblue,citecolor=citegreen,urlcolor=mailviolet,filecolor=linkred]{hyperref}
+\else %latex && dvips
+    \usepackage[dvips]{graphicx}
+    \DeclareGraphicsExtensions{.eps}%.bmp,.tif,.tiff,.tga}
+    \graphicspath{{./pictures/}}
+  \usepackage[hyperindex,pdfmark,dvips,colorlinks=true,linkcolor=tumblue,citecolor=citegreen,urlcolor=mailviolet,filecolor=linkred]{hyperref}
+\fi
+%Zeilenabst�nde regulieren mit \singlespacing, \onehalfspacing, \doublespacing
+\usepackage{subcaption} %{subfigure} alt
+\usepackage{setspace}
+\onehalfspacing
+\parindent 0pt
+%Schriftart Sans Serif
+%\renewcommand*\familydefault{\sfdefault} 

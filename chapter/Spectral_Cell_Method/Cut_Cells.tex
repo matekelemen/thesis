@@ -1,0 +1,24 @@
+% !TEX root = ../../thesis.tex
+%______________________________________________________________________________
+%
+% SECTION
+\section{Cut Cells}
+\label{section:cutcells}
+%
+%______________________________________________________________________________
+
+What is the significance of cut cells?
+What are the issues with them?
+What are the options to handle them in the SCM?
+Touch on badly cut cells too!
+
+Cells that have points in both the fictitious and physical domains (cut cells)
+need a modified integration scheme to resolve the boundary of the geometry. As
+mentioned in \ref{section:fcm}, the most straightforward method is to use a
+space partitioning scheme and perform the quadrature on the resulting subcells.
+However, the additional integration points no longer coincide with roots of the
+basis functions, which in turn lead to non-zero off-diagonal components in the
+% TODO: add figure of a 1D cut cell with its additional integration points
+mass matrix. As this defeats the purpose of the SCM, either the integration
+scheme should be modified such that the number of integration points and their
+positions are retained, or a post-integration lumping needs to be applied.

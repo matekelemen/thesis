@@ -1,0 +1,15 @@
+% !TEX root = ../../thesis.tex
+%______________________________________________________________________________
+%
+% SECTION
+\section{Motivation}
+\label{section:motivation}
+%
+%______________________________________________________________________________
+What is the topic of this thesis? What existing problem am I trying to solve? Why is it relevant?
+Key ideas to convey here:
+Generation of FE meshes for models that need to capture the material properties and geometry "exactly" instead of relying on macro elements, is insanely time consuming (if not impossible in some cases). Furthermore, the resulting models tend to become bloated with DoFs and thus require a lot of computational resources. Both of these issues can be addressed by using the FCM, at the expense of sacrificing all benefits of a boundary-conforming mesh (list some of them). One of the created issues becomes relevant when using finite difference-based time integration, where the FCM is confined to applying implicit methods due to the mass matrix being always non-diagonal. For analyses that have numerous time steps, this creates a possible computational bottleneck.
+Scenarios to mention:
+Lengthy meshing, unmeshable models (foams, composites, internal defects),
+inverse problems (adjoint optimization).
+% TODO: section:Motivation

@@ -1,0 +1,13 @@
+# Temporary tex files
+*.aux
+*.blg
+*.lof
+*.lot
+*.log
+*.out
+*.toc
+*.pdf
+*.gz
+
+.project
+.texlipse

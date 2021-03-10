@@ -1,0 +1,72 @@
+\input{thesis_header}
+
+%--------------------------------------------------------------------------------------------
+% TITLE PAGE
+%--------------------------------------------------------------------------------------------
+
+\newcommand{\DAtype}{{Master's thesis}\\[2ex] 
+for the Master of Science program Computational Mechanics}
+\newcommand{\DAthema}{
+	%TODO
+}
+\newcommand{\DAautor}{Máté Kelemen}
+\newcommand{\Matrikel}{03714642}
+\newcommand{\DAort}{München} % TODO: date & signature
+\newcommand{\DAautorAnschrift}{
+	%TODO: address, email
+}
+\newcommand{\DAprofessor}{PD Dr.-Ing. habil. Stefan Kollmannsberger}
+\newcommand{\DAbetreuer}{Philipp Kopp, M.Sc.}
+\newcommand{\DAausgabe}{
+	%TODO: date of issue
+}
+\newcommand{\DAabgabe}{
+	%TODO: date of submission
+}
+\newcommand{\AdresseLehrstuhl}{Chair of Computational Modeling and Simulation\\
+Department of Civil, Geo and Environmental Engineering\\
+Technische Universität München\\
+Arcisstraße 21\\
+D-80333 München}
+
+%--------------------------------------------------------------------------------------------
+
+\begin{document}
+\input{chapter/00a_titlepage}
+\input{chapter/00b_declaration}
+\tableofcontents
+\cleardoublepage
+
+%--------------------------------------------------------------------------------------------
+% MAIN BODY
+%--------------------------------------------------------------------------------------------
+
+\pagestyle{plain}
+\parskip 8pt
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}{}}
+\pagenumbering{arabic}
+
+\input{chapter/Introduction/Introduction}
+\input{chapter/Fundamental_Concepts/Fundamental_Concepts}
+\input{chapter/Spectral_Cell_Method/Spectral_Cell_Method}
+\input{chapter/Conclusion/Conclusion}
+
+%--------------------------------------------------------------------------------------------
+% APPENDIX
+%--------------------------------------------------------------------------------------------
+
+\cleardoublepage
+\begin{appendix}
+\end{appendix}
+
+\cleardoublepage
+\listoffigures
+\listoftables
+%---
+\bibliographystyle{alpha}
+\bibliography{./literature/references}
+
+%--------------------------------------------------------------------------------------------
+
+\end{document}

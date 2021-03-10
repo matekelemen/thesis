@@ -1,0 +1,196 @@
+% !TEX root = ../../thesis.tex
+%______________________________________________________________________________
+%
+% SECTION
+\section{Mass Lumping Schemes}
+\label{section:masslumpingschemes}
+%
+%______________________________________________________________________________
+
+Mass lumping schemes are another group of candidates for providing diagonal mass
+matrices for cut cells. They are a well established means of diagonalization
+in the standard FEM, usually operating on the element or global matrix level
+and eliminating off-diagonal components while lumping their contributions onto the
+main diagonal. A number of such methods exist with the only universal requirement
+being the preservation each element's total mass. The downside of mass lumping
+techniques is that they are generally heuristic approaches and as such, their
+accuracy may not improve with refinement in some cases. Moreover, their applicability is usually
+restricted to certain types of elements or basis functions, and may provide negative
+masses when these criteria are not met, leading to divergent solutions \cite{Duczek2019}.
+As the SCM's viability hinges on the quality of diagonalized element mass matrices
+of cut cells, choosing an appropriate lumping scheme is essential. Three considered
+methods are presented in the following sections.
+
+%______________________________________________________________________________
+%
+% SUB-SECTION
+\subsection{Row-Sum Lumping}
+\label{section:rowsumlumping}
+%
+%______________________________________________________________________________
+
+Row-sum lumping is the simplest, oldest, and least flexible approach to diagonalization.
+It is often used in the standard FEM and can even have some beneficial effects on the quality
+of the solution for specific cases, such as adding artificial viscous behaviour to the system \cite{Hughes2000}.
+Its name self-explanatorily originates from how the lumping is carried out:
+
+\begin{equation} \label{eq:rowsumlumping}
+	\begin{array}{ll}
+	M_{ij}^{e,RS}
+	
+	&= \left\{ \begin{array}{ll}
+			\sum_k \int_{\Omega^e} N_i \rho N_k d\Omega & i=j \\
+			0 & i \neq j \\
+		\end{array} \right. \\
+		
+	&= \left\{ \begin{array}{ll}
+			\sum_k \int_{\Omega^e} \rho N_k d\Omega & i=j \\
+			0 & i \neq j \\
+		\end{array} \right. \\
+		
+	&= \left\{ \begin{array}{ll}
+			\sum_k M_{ik}^e & i=j \\
+			0 & i \neq j \\
+		\end{array} \right. \\
+		
+	\end{array}
+\end{equation}
+
+Since the computation takes place on rows independently, the lumping can be executed
+on the global mass matrix and can be trivially parallelized. However, note that
+\ref{eq:rowsumlumping} holds only if the shape functions $N_i$ have a partition
+of unity. Furthermore, this method may produce non-positive masses for high order ($p>2$)
+basis functions \cite{Duczek2014}, which rules out its use in the SCM.
+
+%______________________________________________________________________________
+%
+% SUB-SECTION
+\subsection{Density Scaling}
+\label{section:?lumping}
+%
+%______________________________________________________________________________
+
+Density scaling is described in \cite{Joulaian2014} and is unique to fictitious
+domain methods, as the lumped matrix $M_{ij}^{e,DS}$ is given by the diagonal of the uncut cell's
+consistent mass matrix $M_{ij}^{u,e}$, scaled to preserve the cut cell's mass $m_e$.
+
+\begin{equation} \label{eq:densityscaling}
+	M_{ij}^{e,DS} = \left\{ \begin{array}{ll}
+		\frac{m_e}{\sum_k M_{kk}^{u,e}} M_{ij}^{u,e} & i = j \\
+		0 & i \neq j \\
+	\end{array} \right.
+\end{equation}
+
+For the SCM, the resulting matrix in \ref{eq:densityscaling} is equivalent
+to that of an uncut cell, whose density is scaled by the considered cells' mass ratio.
+
+\begin{equation} \label{eq:scaleddensity}
+	\rho_s = \frac{\int_{\Omega^e} \alpha \rho d\Omega}{\int_{\Omega^e} \rho d\Omega} \rho
+\end{equation}
+
+As a result, the geometric information on the boundary between the physical
+and fictitious domains is lost in the process. Moreover, defining the density
+outside the physical domain might not be straightforward for complex models, but
+this issue is not addressed in the thesis as a constant density is assumed.
+
+Compared to row-summing, this scheme imposes the additional overhead of having
+to compute an extra mass matrix of an uncut cell, and it cannot be performed
+on the assembled mass matrix. What it provides in return however, is physical
+interpretability and a guaranteed positive-definite mass matrix.
+
+%______________________________________________________________________________
+%
+% SUB-SECTION
+\subsection{HRZ Lumping}
+\label{section:hrzlumping}
+%
+%______________________________________________________________________________
+
+HRZ lumping, also called diagonal scaling, discards off-diagonal components in the
+element mass matrix and scales the diagonal such that the total mass is preserved \cite{Hinton1976}.
+
+\begin{equation} \label{eq:hrzlumping}
+	M_{ij}^{e,HRZ} = \left\{ \begin{array}{ll}
+		\frac{m^e}{\sum_k M_{kk}^e} M_{ij}^e & i=j \\
+		0 & i \neq j \\
+	\end{array} \right.
+\end{equation}
+
+Although this method guarantees the positive definiteness of the mass matrix, it
+likely leads to reduced convergence rates \cite{Duczek2019}. Despite this shortcoming,
+HRZ lumping is used in this thesis to lump the mass matrices of cut cells because
+it provides positive diagonal components as opposed to row summing, it takes the
+material distribution in the cell into account more accurately than density scaling, and
+it does not impose significant overhead in the used software.
+
+% -------------------------------------
+\subsubsection*{Total mass of a cell}
+\label{section:totalmassofacell}
+% -------------------------------------
+
+In order to compute the coefficient for scaling the diagonal components, the total
+mass of the cell must be calculated first.
+
+\begin{equation} \label{eq:celltotalmass}
+	m^e = \int_{\Omega^e} \rho d\Omega
+\end{equation}
+
+Using basis functions that have partition of unity, \ref{eq:celltotalmass} can
+be simplified to the sum of all components in the element mass matrix.
+\begin{equation} \label{eq:sumofmassmatrixcomponents}
+	m^e = \sum_i \sum_j M_{ij}^e
+\end{equation}
+
+
+Functions in an ansatz space constructed from the tensor product of basis functions
+retain partition of unity.
+
+\begin{equation*}
+\begin{array}{lll}
+	\sum_k L_k(x) \equiv 1 & x \in [a,b] & a,b \in \rm I\!R \\
+\end{array}
+\end{equation*}
+
+\begin{equation}
+\begin{array}{ll}
+	N_i &= N_{3^2r + 3s + t} = L_r L_s L_t \\
+	\\
+	\sum_i N_i
+	&= \sum_r \sum_s \sum_t L_r L_s L_t	\\
+	&= \sum_r
+	\left(
+		L_r \sum_s
+		\left(
+			L_s \sum_t L_t
+		\right)
+	\right) \\
+	& \equiv 1
+\end{array}
+\end{equation}
+
+
+As a result, the components of a cell's mass matrix add up to its total mass.
+\begin{equation}
+\begin{aligned}
+	\sum_i \sum_j M_{ij}^e &= \sum_i \sum_j \int_{\Omega^e} \rho N_i N_j d\Omega \\
+	&= \int_{\Omega^e} \rho \sum_i \sum_j N_i N_j d\Omega \\
+	&= \int_{\Omega^e} \rho \sum_i
+	\left(
+		N_i \sum_j N_j
+	\right)
+	d\Omega \\
+	&= \int_{\Omega^e} \rho d\Omega \\
+	&= m^e
+\end{aligned}
+\end{equation}
+
+This proves useful in the SCM, since lumping can be performed using only the consistent
+element mass matrix obtained from adaptive integration, without having to separately
+calculate the total mass.
+
+\begin{equation}
+	M_{ij}^{e,HRZ} = \left\{ \begin{array}{ll}
+	\frac{\sum_k \sum_l M_{kl}^e}{\sum_n M_{nn}^e} M_{ij}^e & i=j \\
+	0 & i \neq j \\
+	\end{array} \right.
+\end{equation}

@@ -1,0 +1,23 @@
+% !TEX root = ../../thesis.tex
+%______________________________________________________________________________
+%
+% SECTION
+\section{Overview}
+\label{section:overview}
+%
+%______________________________________________________________________________
+
+What is the main idea of the SCM in a nutshell?
+How does it differ from the previous methods?
+What are the main challenges to be solved?
+
+Expand:
+
+The SCM is based on the FCM but uses basis functions and integration schemes
+of the SEM in order to partially diagonalize the mass matrix. Cells that are
+located entirely in the physical domain are handled identically as in the SEM.
+However, integrating cut cells using methods from the FCM leads to non-zero
+off-diagonal components in the mass matrix. The main challenge is to
+robustly handle cut cells such that the resulting mass matrix remains diagonal.
+Considered methods that attempt to tackle this problem are described in this
+chapter.

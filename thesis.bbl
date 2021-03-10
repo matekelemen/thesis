@@ -1,0 +1,90 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{KPTK03}
+
+\bibitem[LB13]{Larson2013}
+M.G.~Larson, F.~Bengzon.
+\newblock The Finite Element Method: Theory, Implementation and Applications.
+\newblock {\em}, 2013
+
+\bibitem[ZW14]{Zhao2014}
+S.~Zhao, G.W.~Wei.
+\newblock A unified discontinuous Galerkin framework for time integration.
+\newblock {\em Mathematical Methods in the Applied Sciences}, 37(1042-1071), 2014
+
+\bibitem[KB14]{Kocher2014}
+U.~K{\"o}cher, M.~Bause.
+\newblock Variational Space-Time Methods for the Wave Equation
+\newblock {\em IEEE transactions on magnetics}, 47(1530-1533), 2014
+
+\bibitem[CFL67]{Courant1967}
+R.~Courant, K.~Friedrichs, H.~Lewy
+\newblock On the Partial Difference Equations of Mathematical Physics.
+\newblock {\em IBM Journal of Research and Development}, 11(215-234), 1967
+
+\bibitem[N59]{Newmark1959}
+N.M.~Newmark.
+\newblock A Method of Computation for Structural Dynamics.
+\newblock {\em Journal of the Engineering Mechanics Division}, 85, 1959
+
+\bibitem[A88]{Atkinson1988}
+K.E.~Atkinson.
+\newblock An Introduction to Numerical Analysis: Second Edition.
+\newblock {\em }, 1988
+
+\bibitem[DPYR08]{Duester2007}
+A.~D{\"u}ster, J.~Parvizian, Z.~Yang, and E.~Rank.
+\newblock The finite cell method for three-dimensional problems of solid
+  mechanics.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering},
+  197(45-48):3768 -- 3782, 2008.
+  
+\bibitem[JAE07]{Jamshid2007}
+J.~Parvizian, A.~D{\"u}ster, E.~Rank.
+\newblock Finite cell method h- and p-extension for embedded domain problems in solid mechanics
+\newblock {\em Computational Mechanics}, 41(121-133), 2007
+
+\bibitem[BBO04]{Babuska2004}
+I.~Babu{\v s}ka, U.~Banerjee, J.~Osborn.
+\newblock Generalized Finite Element Methods: Main Ideas, Results, and Perspective.
+\newblock {\em}, 2004
+
+\bibitem[CLE06]{Chen2006}
+Y.~Chen, J.~Lee, A.~Eskandarian.
+\newblock Meshless Methods in Solid Mechanics.
+\newblock {\em}, 2006
+
+\bibitem[MKO13]{Muller2013}
+B.~M{\"u}ller, F.~Kummer, M.~Oberlack.
+\newblock Highly accurate surface and volume integration on implicit domains by means of moment-fitting
+
+\bibitem[JHD15]{Joulaian2015}
+J.~Meysam, S.~Hubrich, A.~D{~"u}ster.
+\newblock Numerical integration of discontinuities on arbitrary domains based on moment fitting
+  
+\bibitem[HRZ76]{Hinton1976}
+E.~Hinton, T.~Rock, and O.C.~Zienkiewicz.
+\newblock A note on mass lumping and related processes in the finite element method.
+\newblock {\em Earthquake Engineering and Structural Dynamics},
+  4(245-249), 1976.
+  
+\bibitem[DG19]{Duczek2019}
+S.~Duczek, H.~Gravenkamp.
+\newblock Critical Assessment of different mass lumping schemes for higher order serendipity finite elements.
+\newblock {\em Computational Methods in Applied Mechanical Engineering}, 350(836-897), 2019.
+
+\bibitem[H00]{Hughes2000}
+T.J.R.~Hughes.
+\newblock The finite element method: Linear static and dynamic finite element analysis.
+\newblock {\em },, 2000.
+
+\bibitem[D14]{Duczek2014}
+S.~Duczek.
+\newblock Higher order finite elements and the fictitious domain concept for wave propagation analysis.
+\newblock {\em },, 2014.
+
+\bibitem[JDGD14]{Joulaian2014}
+M.~Joulaian, S.~Duczek, U.~Gabbert, A.~D{\"u}ster.
+\newblock Finite and spectral cell method for wave propagation in heterogeneous materials.
+\newblock {\em Computational Mechanics}, 54(661-675), 2014.
+
+\end{thebibliography}

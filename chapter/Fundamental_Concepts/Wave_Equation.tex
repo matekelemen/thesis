@@ -1,0 +1,180 @@
+% !TEX root = ../../thesis.tex
+%______________________________________________________________________________
+%
+% SECTION
+\section{The Wave Equation}
+\label{section:wave_equation}
+%
+%______________________________________________________________________________
+
+Although the Finite Element Method (FEM) and its derivatives can be applied to a variety Partial Differential Equations (PDEs), the linear wave equation is chosen in this thesis as a simple model to demonstrate the discussed methods.
+Its relation to full waveform inversion and history with the Spectral Element Method (SEM) makes it relevant for the topic, while its simplicity allows for focusing on the important aspects of the Spectral Cell Method (SCM).
+
+The material is assumed to be undamped, homogeneous, and isotropic on a geometry $\Omega \subset \rm I\!R^3$ with perfectly reflective boundaries $\Gamma \subset \Omega$ interpreted as homogeneous Neumann conditions. The time-dependent load $f$ is applied as a volumetric source instead of boundary conditions because the spatial discretization is not assumed to be boundary-conforming, as discussed in chapter \ref{section:fcm}.
+
+\begin{equation} \label{eq:wave_equation}
+	\begin{array}{rll}
+		\rho \cfrac{\partial^2 u(\mathbf x,t)}{\partial t^2} - E \Delta u(\mathbf x, t) &= f(\mathbf x, t)
+		& \mathbf x \in \Omega \\
+		\partial_n u(\mathbf x, t) &= 0
+		& \mathbf x \in \Gamma \\
+		u(\mathbf x, 0) &= u_0(\mathbf x)
+		& \mathbf x \in \Omega \\
+		\cfrac{\partial u(\mathbf x, 0)}{\partial t} &= v_0(\mathbf x)
+		& \mathbf x \in \Omega \\
+	\end{array}
+\end{equation}
+
+\begin{equation}
+	\rho, E \in \rm I\!R^+
+\end{equation}
+
+where the displacement $u$ varies in space $\mathbf x \in \Omega$ and time $t \in \rm I\!R^+ \cup \{0\}$, the material is modeled with a constant density $\rho$ and Young's modulus $E$, and $\partial_n$ representing the derivative normal to the geometry's boundary $\Gamma$. The initial state of the system at $t=0$ is defined by its displacement $u_0(\mathbf x)$ and velocity $v_0(\mathbf x)$ field.
+The PDE \ref{eq:wave_equation} is discretized by finite elements in space, and finite differences in time. Since the theory and details of both discretizations have extensive literature, only an informal overview relevant to the covered topics is provided here. A more detailed derivation can be found in \cite{Larson2013} for example.
+
+%______________________________________________________________________________
+% SUB-SECTION
+\subsection*{Spatial Discretization}
+\label{subsection:wave_equation_spatial_discretization}
+%______________________________________________________________________________
+
+The first step to obtaining a weak form is to multiply \ref{eq:wave_equation} with a test function $v(\mathbf x)$ from an appropriate ansatz space $V$, and integrate over the spatial domain.
+
+\begin{equation}
+	\int_{\Omega} v(\mathbf x) \rho \cfrac{\partial^2 u(\mathbf x, t)}{\partial t^2} dx
+	-
+	\int_{\Omega} v(\mathbf x) E \Delta u(\mathbf x, t) dx
+	=
+	\int_{\Omega} v(\mathbf x) f(\mathbf x, t) dx
+\end{equation}
+
+Integrating by parts and considering the homogeneous Neumann boundaries, the Laplace operator in space can be converted, leading to the weak form of the wave equation.
+
+\begin{equation}
+	\int_{\Omega} v \rho \cfrac{\partial^2 u}{\partial t^2} dx
+	+
+	\int_{\Omega} \nabla v E \nabla u dx
+	=
+	\int_{\Omega} v f dx
+\end{equation}
+
+Spatial discretization is carried out by approximating the solution field and test function with linear combinations of ansatz functions $N_i(\mathbf x) \in V_h \subset V$.
+\begin{equation}
+	\begin{array}{rl}
+		u(\mathbf x, t) &\cong \ \sum_i N_i(\mathbf x) \hat u_i(t) \\
+		v(\mathbf x) &\cong \ \sum_i N_i(\mathbf x)
+	\end{array}
+\end{equation}
+
+\begin{equation}
+	\int_{\Omega} \sum_i N_i \ \rho \sum_j N_j \cfrac{\partial^2 \hat u_j}{\partial t^2} \ dx
+	+
+	\int_{\Omega} \sum_i \nabla N_i E \sum_j \nabla N_j \hat u_j \ dx
+	=
+	\int_{\Omega} f \sum_i N_i dx
+\end{equation}
+
+\begin{equation} \label{eq:wave_equation_spatially_discretized}
+	\int_{\Omega} N_i \rho N_j dx \ \cfrac{\partial^2 \hat u_j}{\partial t^2}
+	+
+	\int_{\Omega} \nabla N_i E \nabla N_j dx \ \hat u_j
+	=
+	\int_{\Omega} f N_i dx
+\end{equation}
+
+The mass matrix $\mathbf M$, stiffness matrix $\mathbf K$ and load vector $\mathbf f$ appear in \ref{eq:wave_equation_spatially_discretized}.
+
+\begin{equation} \label{eq:wave_equation_structural_components}
+M_{ij} \cfrac{\partial^2 \hat u_j}{\partial t^2}
++
+K_{ij} \hat u_j
+=
+f_i
+\end{equation}
+
+\begin{equation} \label{eq:structural_components}
+	\begin{array}{rl}
+		M_{ij} &= \ \int_{\Omega} N_i \rho N_j dx \\
+		K_{ij} &= \ \int_{\Omega} \nabla N_i E \nabla N_j dx \\
+		f_{i}  &= \ \int_{\Omega} f N_i dx \\
+	\end{array}
+\end{equation}
+
+%______________________________________________________________________________
+% SUB-SECTION
+\subsection*{Temporal Discretization}
+\label{subsection:wave_equation_temporal_discretization}
+%______________________________________________________________________________
+
+The result of the spatially discretized wave equation \ref{eq:wave_equation_structural_components} is a second order Ordinary Differential Equation (ODE), identical in form for many linear undamped models in structural mechanics and other fields. Although variational time discretization methods with appealing properties have been explored \cite{Zhao2014} and applied to the wave equation \cite{Kocher2014}, finite difference schemes dominate the literature most likely due to their simplicity, long history, and efficiency in both computational load and memory requirements.
+
+Two main categories of finite difference schemes exist with distinct properties. To allow a more general discussion on them, \ref{eq:wave_equation_structural_components} is transformed into a first order system of the form $\dot{\mathbf y}(t) = \mathbf g(t, \mathbf y(t))$
+
+\begin{equation} \label{eq:wave_equation_first_order_form}
+	\dot{\mathbf y}(t) := 
+	\begin{bmatrix}
+		\dot{\hat{\mathbf u}}(t) \\
+		\ddot{\hat{\mathbf u}}(t) \\
+	\end{bmatrix}
+	=
+	\begin{bmatrix}
+		0 & \mathbf I \\
+		- \mathbf M^{-1} \mathbf K & 0 \\
+	\end{bmatrix}
+	\begin{bmatrix}
+		\hat{\mathbf u}(t) \\
+		\dot{\hat{\mathbf u}}(t) \\
+	\end{bmatrix}
+	+
+	\begin{bmatrix}
+		0 \\
+		\mathbf M^{-1} \mathbf f
+	\end{bmatrix}
+	=
+	\mathbf g(t, \mathbf y(t))
+\end{equation}
+
+where $\dot \square = \cfrac{d \square}{d t}$ denotes time differentiation and the extended state is defined as $\mathbf y = [\hat{\mathbf u} \ \dot{\hat{\mathbf u}}]^T$. A generic finite difference scheme marches at discrete points in time $t_k$ to approximate the system's state $\mathbf y_k = \mathbf y(t_k)$ using \ref{eq:wave_equation_first_order_form}.
+
+\begin{equation} \label{eq:generic_finite_differences}
+	\mathbf y_{k+1} \approx \mathbf h^i(\mathbf y_{k+1}) + \mathbf h^e(\mathbf y_k, \mathbf y_{k-1}, ..., \mathbf y_0)
+\end{equation}
+
+For implicit methods, $\mathbf h^i \neq 0$ and $\mathbf h^e = 0$ meaning that they include the yet unknown state $\mathbf y_{k+1}$, requiring the solution of an algebraic equation system at each time step. These methods are unconditionally stable and may prove to be a suitable choice for problems where large time steps are acceptable.
+
+On the other hand, explicit methods only use previously computed states ($\mathbf h^i = 0$ and $\mathbf h^e \neq 0$), requiring the evaluation of the right hand side in \ref{eq:wave_equation_first_order_form} at earlier time points, but no linear system solutions. This limits the number of costly matrix-matrix operations but comes at the expense of stability. To be convergent, explicit finite difference schemes must satisfy the Courant-Friedrichs-Lewy (CFL) condition \cite{Courant1967}, which defines an upper bound for the time step size relative to the spatial discretization. This requirement can defeat the purpose of using explicit methods in some cases as the computational load per step size may exceed that of implicit ones. As mentioned in \ref{chapter:introduction} however, the assumption in this thesis is that the physics of the problem already demand small time steps, justifying the use of explicit finite differences.
+
+A popular method for the temporal discretization of \ref{eq:wave_equation_first_order_form} is the Newmark-beta scheme \cite{Newmark1959} that assigns tunable weights to the accelerations separately for the approximation of the velocity and displacement. Depending on the choice of parameters $\beta$ and $\gamma$, it can either be implicit or explicit.
+
+\begin{equation}
+	\begin{array}{rl}
+		\hat{\mathbf{u}}_{k+1} &= \ \hat{\mathbf{u}}_k + \Delta t \dot{\hat{\mathbf{u}}}_k + \Delta t^2
+		\cfrac{(1-2 \beta) \ddot{\hat{\mathbf{u}}}_k + 2 \beta \ddot{\hat{\mathbf{u}}}_{k+1}}{2} \\
+		\dot{\hat{\mathbf{u}}}_{k+1} &= \ \dot{\hat{\mathbf{u}}}_k + \Delta t \left(
+		(1 - \gamma) \ddot{\hat{\mathbf{u}}}_k + \gamma \ddot{\hat{\mathbf{u}}}_{k+1}
+		\right) \\
+	\end{array}
+\end{equation}
+
+The second order Central Difference Method (CDM) is obtained by setting the parameters $\beta=0$ and $\gamma=\frac{1}{2}$.
+
+\begin{equation} \label{eq:central_differences_raw}
+	\begin{array}{rl}
+		\hat{\mathbf u}_{k+1} &= \hat{\mathbf u}_k + \Delta t \dot{\hat{\mathbf u}}_k + \cfrac{\Delta t^2}{2} \ddot{\hat{\mathbf u}}_k \\
+		\dot{\hat{\mathbf u}}_{k+1} &= \dot{\hat{\mathbf u}}_k + \cfrac{\Delta t}{2}( \ddot{\hat{\mathbf u}}_k + \ddot{\hat{\mathbf u}}_{k+1} ) \\
+	\end{array}
+\end{equation}
+
+To show that \ref{eq:central_differences_raw} is explicit, the first derivatives can be eliminated:
+
+\begin{equation} \label{eq:central_differences}
+	\hat{\mathbf u}_{k+1} = 2\hat{\mathbf u}_k - \hat{\mathbf u}_{k-1} + \Delta t^2 \ddot{\hat{\mathbf u}}_k
+\end{equation}
+
+Substituting \ref{eq:wave_equation_first_order_form} into \ref{eq:central_differences} leads to a fully discretized form of the wave equation.
+
+\begin{equation} \label{eq:wave_equation_fully_discretized}
+	\hat{\mathbf u}_{k+1} = 2\hat{\mathbf u}_k - \hat{\mathbf u}_{k-1} + \Delta t^2 \mathbf M^{-1}(\mathbf f_k - \mathbf K \hat{\mathbf u}_k)
+\end{equation}
+
+Note that \ref{eq:wave_equation_fully_discretized} requires the inversion of the mass matrix $\mathbf M$, which is a common property of all explicit methods. Depending on its sparsity and the number of time steps, multiplying the equation with $\mathbf M$ might prove to be more efficient, shifting the computational burden from the inversion of a matrix once to solving pre-factorized linear systems at each time step. However, the ideal case would be if the mass matrix were diagonal, eliminating the need of all matrix-matrix operations and limiting the number of matrix-vector operations. Finding a suitable process to achieve this and combining it with the Finite Cell Method \ref{section:fcm} is the main goal of this thesis.
