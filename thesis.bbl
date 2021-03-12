@@ -56,15 +56,32 @@ Y.~Chen, J.~Lee, A.~Eskandarian.
 \bibitem[MKO13]{Muller2013}
 B.~M{\"u}ller, F.~Kummer, M.~Oberlack.
 \newblock Highly accurate surface and volume integration on implicit domains by means of moment-fitting
+\newblock {\em}, 2013
 
 \bibitem[JHD15]{Joulaian2015}
 J.~Meysam, S.~Hubrich, A.~D{~"u}ster.
 \newblock Numerical integration of discontinuities on arbitrary domains based on moment fitting
+\newblock {\em}, 2015
 
 \bibitem[MQ94]{Maggio1994}
 F.~Maggio, A.~Quarteroni.
 \newblock Acoustic wave simulation by spectral methods
 \newblock {\em East-West J. Numer. Math.}, 2 (129-150), 1994
+
+\bibitem[Z96]{Zumbusch1996}
+G.W.~Zumbusch
+\newblock Symmetric Hierarchical Polynomials for the h-p-Version of Finite Elements
+\newblock {\em Houston Journal of Mathematics}, (529-540), 1996
+
+\bibitem[K96]{Keister1996}
+B.D.~Keister.
+\newblock Multidimensional Quadrature Algorithms
+\newblock {\em Computers in Physics}, 10 (119-122), 1996
+
+\bibitem[AW10]{Ainsworth2010}
+M.~Ainsworth, H.A.~Wajtid.
+\newblock Optimally Blended Spectral-Finite Element Scheme for Wave Propagation and Nonstandard Reduced Integration
+\newblock {\em SIAM Journal on Numerical Analysis}, 48 (346-371), 2010
   
 \bibitem[HRZ76]{Hinton1976}
 E.~Hinton, T.~Rock, and O.C.~Zienkiewicz.

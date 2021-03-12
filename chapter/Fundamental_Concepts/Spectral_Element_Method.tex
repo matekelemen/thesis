@@ -29,7 +29,22 @@ Using the same line of thought as for the simplification of the moment fitting e
 
 where $\mathbf J$ is the Jacobian facilitating the change of variables from $\mathbf x$ to $\boldsymbol{\xi}$.
 
-Gauss-Lobatto points are chosen in particular because they include the limits of the integration domain, ensuring that all except one ansatz functions vanish on each border. This property is essential for FE-based methods to ensure the continuity between elements, allow the blending of specific ansatz functions to exactly capture certain types of boundaries, and strongly enforce boundary conditions.
+Gauss-Lobatto points are chosen in particular because they always include the limits of the integration domain $-1$ and $1$, ensuring that all except one ansatz functions vanish on each border, as shown in figure \ref{fig:lagrange_basis}. This property is essential for FE-based methods to ensure the continuity between elements, allow the blending of specific ansatz functions to exactly capture certain types of boundaries, and strongly enforce boundary conditions.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=6cm]{pictures/figures/lagrange_basis.png}
+	\caption{Lagrange basis functions on a set of fourth order Gauss-Lobatto points.}
+	\label{fig:lagrange_basis}
+\end{figure}
+
+Using a Lagrange basis instead of integrated Legendre polynomials has some unpleasant consequences. Firstly, the hierarchic nature of the ansatz space is lost, requiring the entire re-evaluation of all structural matrices when performing p-refinement. Moreover, the conditioning of the stiffness matrix is no longer optimal \cite{Zumbusch1996} but degrades with increasing $p$. Lastly, no complete trunk space of Lagrange polynomials exist, which means that the ansatz space must be constructed from the tensor product of the basis functions, leading to an increased number of degrees of freedom and requiring more computational resources.
+On the other hand, Lagrange basis functions are nodal and have a partition of unity $\sum_{k=1}^m L_k(\xi) = 1$, which makes lumping procedures possible and simple.
+
+To ensure the diagonality of the mass matrix, the basis functions' polynomial order $p$ uniquely defines the quadrature scheme as the tensor product of $m=p+1$ order Gauss-Lobatto rule, leading to further undesirable effects. The most obvious one of course is the lack of choice when it comes to the selection integration schemes.
+This greatly limits the types of problems the SEM is applicable to, since the set of exactly integrable polynomials becomes limited, restricting the total polynomial order of the integrands in equation \ref{eq:structural_components}. The highest polynomial order a tensor product quadrature scheme is able to exactly integrate is identical to that of the underlying 1D rule for each variable \cite{Keister1996}. In the case of SEM, this translates to $2m-3=2p-1$. Considering \ref{eq:structural_components}, the highest order of the mass matrix's integrand is $2p$ per direction, while the stiffness matrix's is $2p-1$ in 1D and $2p$ in higher dimensions. Consequently, neither the mass nor the stiffness matrix can be integrated exactly (apart from 1D models), even for constant material parameters.
+
+Since the stiffness matrix does not benefit from using the Gauss-Lobatto rule in any way, a different integration scheme can be applied. Unfortunately, no solution exists to this problem in the mass matrix's case, meaning that it is always underintegrated in the SEM. It is important to note that under certain circumstances, especially in wave propagation problems, this drawback partly balances other errors originating from the discretization \cite{Ainsworth2010}, leading to more accurate results when compared to the classical FEM. In general however, it is an additional source of errors and a restriction that limits the physical models to linear ones.
 
 Main ideas to go through:
 
