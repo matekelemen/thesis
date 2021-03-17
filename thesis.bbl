@@ -1,5 +1,4 @@
-\newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{KPTK03}
+\begin{thebibliography}{}
 
 \bibitem[LB13]{Larson2013}
 M.G.~Larson, F.~Bengzon.
@@ -34,10 +33,10 @@ K.E.~Atkinson.
 \bibitem[DPYR08]{Duester2007}
 A.~D{\"u}ster, J.~Parvizian, Z.~Yang, and E.~Rank.
 \newblock The finite cell method for three-dimensional problems of solid
-  mechanics.
+mechanics.
 \newblock {\em Computer Methods in Applied Mechanics and Engineering},
-  197(45-48):3768 -- 3782, 2008.
-  
+197(45-48):3768 -- 3782, 2008.
+
 \bibitem[PDR07]{Parvizian2007}
 J.~Parvizian, A.~D{\"u}ster, E.~Rank.
 \newblock Finite cell method h- and p-extension for embedded domain problems in solid mechanics
@@ -82,13 +81,13 @@ B.D.~Keister.
 M.~Ainsworth, H.A.~Wajtid.
 \newblock Optimally Blended Spectral-Finite Element Scheme for Wave Propagation and Nonstandard Reduced Integration
 \newblock {\em SIAM Journal on Numerical Analysis}, 48 (346-371), 2010
-  
+
 \bibitem[HRZ76]{Hinton1976}
 E.~Hinton, T.~Rock, and O.C.~Zienkiewicz.
 \newblock A note on mass lumping and related processes in the finite element method.
 \newblock {\em Earthquake Engineering and Structural Dynamics},
-  4(245-249), 1976.
-  
+4(245-249), 1976.
+
 \bibitem[DG19]{Duczek2019}
 S.~Duczek, H.~Gravenkamp.
 \newblock Critical Assessment of different mass lumping schemes for higher order serendipity finite elements.
@@ -103,6 +102,16 @@ T.J.R.~Hughes.
 S.~Duczek.
 \newblock Higher order finite elements and the fictitious domain concept for wave propagation analysis.
 \newblock {\em },, 2014.
+
+\bibitem[HSL98]{Huang1998}
+N.E.~Huang, Z.S.~Shen, S.R.~Long, M.C.~Wu, H.H.~Shih, Q.~Zheng, N.~Yen, C.C.~Tung, H.H.~Liu.
+\newblock The empirical mode decomposition and the Hilbert spectrum for nonlinear and non-stationary time series analysis
+\newblock {\em Proceedings: Mathematical, Physical and Engineering Sciences}, 454 (903-995), 1998
+
+\bibitem[DJDG14]{Duczek2014_2}
+S.~Duczek, M.~Joulaian, A.~D{\"u}ster, U.~Gabbert.
+\newblock Numerical analysis of Lamb waves using the finite and spectral cell methods
+\newblock {\em Int. J. Numer. Meth. Engng.}, 99 (26-53), 2014
 
 \bibitem[JDGD14]{Joulaian2014}
 M.~Joulaian, S.~Duczek, U.~Gabbert, A.~D{\"u}ster.
