@@ -12,6 +12,17 @@ What are the issues with them?
 What are the options to handle them in the SCM?
 Touch on badly cut cells too!
 
+Cells that are inside the physical domain in their entirety are treated identically as in the SEM, while others located completely in the fictitious domain can be discarded. However, the main issue of the SCM arises when dealing with cells that have points in both domains (cut cells).
+
+While adaptive integration schemes can be used to accurately compute the element stiffness matrices $\mathbf K^e$ and load vectors $\mathbf f^e$, mass matrices $\mathbf M^e$ do not have this option. Adaptive integration introduces new quadrature points that do not coincide with the Gauss-Lobatto points, leading to non-zero off-diagonal entries in the mass matrix. However, standard Gauss-Lobatto quadrature is unsuitable for integrating discontinuous functions. The two possible approaches to solving this problem are:
+
+\begin{itemize}
+	\item finding an integration scheme capable of dealing with discontinuities while preserving the location of quadrature points
+	\item diagonalizing mass matrices after integration
+\end{itemize}
+
+A candidate for the former is moment fitting, while the latter approach is covered by mass lumping schemes that have extensive literature.
+
 Cells that have points in both the fictitious and physical domains (cut cells)
 need a modified integration scheme to resolve the boundary of the geometry. As
 mentioned in \ref{section:fcm}, the most straightforward method is to use a
