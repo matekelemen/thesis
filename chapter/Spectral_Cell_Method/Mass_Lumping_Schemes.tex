@@ -14,7 +14,7 @@ and eliminating off-diagonal components while lumping their contributions onto t
 main diagonal. A number of such methods exist with the only universal requirement
 being the preservation each element's total mass. The downside of mass lumping
 techniques is that they are generally heuristic approaches and as such, their
-accuracy may not improve with refinement in some cases. Moreover, their applicability is usually
+accuracy may not improve with p-refinement in some cases. Moreover, their applicability is usually
 restricted to certain types of elements or basis functions, and may provide negative
 masses when these criteria are not met, leading to divergent solutions \cite{Duczek2019}.
 As the SCM's viability hinges on the quality of diagonalized element mass matrices
@@ -29,29 +29,17 @@ methods are presented in the following sections.
 %
 %______________________________________________________________________________
 
-Row-sum lumping is the simplest, oldest, and least flexible approach to diagonalization.
+Row-sum lumping is one of the simplest approaches to diagonalization.
 It is often used in the standard FEM and can even have some beneficial effects on the quality
 of the solution for specific cases, such as adding artificial viscous behaviour to the system \cite{Hughes2000}.
-Its name self-explanatorily originates from how the lumping is carried out:
+The diagonal entries of an element mass matrix $M_{ii}^{e,RS}$ using the row-sum technique are computed as follows:
 
 \begin{equation} \label{eq:rowsumlumping}
-	\begin{array}{ll}
-	M_{ij}^{e,RS}
+	\begin{array}{rl}
+	M_{i}^{e,RS}
 	
-	&= \left\{ \begin{array}{ll}
-			\sum_k \int_{\Omega^e} N_i \rho N_k d\Omega & i=j \\
-			0 & i \neq j \\
-		\end{array} \right. \\
-		
-	&= \left\{ \begin{array}{ll}
-			\sum_k \int_{\Omega^e} \rho N_k d\Omega & i=j \\
-			0 & i \neq j \\
-		\end{array} \right. \\
-		
-	&= \left\{ \begin{array}{ll}
-			\sum_k M_{ik}^e & i=j \\
-			0 & i \neq j \\
-		\end{array} \right. \\
+	&= \sum_k \int_{\Omega^e} N_i \rho N_k d\Omega \\[0.5em]
+	&= \sum_k M_{ik}^e
 		
 	\end{array}
 \end{equation}
@@ -75,14 +63,12 @@ domain methods, as the lumped matrix $M_{ij}^{e,DS}$ is given by the diagonal of
 consistent mass matrix $M_{ij}^{u,e}$, scaled to preserve the cut cell's mass $m_e$.
 
 \begin{equation} \label{eq:densityscaling}
-	M_{ij}^{e,DS} = \left\{ \begin{array}{ll}
-		\frac{m_e}{\sum_k M_{kk}^{u,e}} M_{ij}^{u,e} & i = j \\
-		0 & i \neq j \\
-	\end{array} \right.
+	M_{ii}^{e,DS} =
+		\frac{m_e}{\sum_k M_{kk}^{u,e}} M_{ii}^{u,e}
 \end{equation}
 
 For the SCM, the resulting matrix in \ref{eq:densityscaling} is equivalent
-to that of an uncut cell, whose density is scaled by the considered cells' mass ratio.
+to that of an uncut cell, whose density is scaled by the considered cell's mass ratio.
 
 \begin{equation} \label{eq:scaleddensity}
 	\rho_s = \frac{\int_{\Omega^e} \alpha \rho d\Omega}{\int_{\Omega^e} \rho d\Omega} \rho
@@ -110,10 +96,8 @@ HRZ lumping, also called diagonal scaling, discards off-diagonal components in t
 element mass matrix and scales the diagonal such that the total mass is preserved \cite{Hinton1976}.
 
 \begin{equation} \label{eq:hrzlumping}
-	M_{ij}^{e,HRZ} = \left\{ \begin{array}{ll}
-		\frac{m^e}{\sum_k M_{kk}^e} M_{ij}^e & i=j \\
-		0 & i \neq j \\
-	\end{array} \right.
+	M_{ii}^{e,HRZ} =
+		\frac{m^e}{\sum_k M_{kk}^e} M_{ii}^e
 \end{equation}
 
 Although this method guarantees the positive definiteness of the mass matrix, it
@@ -136,14 +120,14 @@ mass of the cell must be calculated first.
 \end{equation}
 
 Using basis functions that have partition of unity, \ref{eq:celltotalmass} can
-be simplified to the sum of all components in the element mass matrix.
+be computed from the sum of all components in the element mass matrix.
 \begin{equation} \label{eq:sumofmassmatrixcomponents}
 	m^e = \sum_i \sum_j M_{ij}^e
 \end{equation}
 
 
 Functions in an ansatz space constructed from the tensor product of basis functions
-retain partition of unity.
+retain partition of unity:
 
 \begin{equation*}
 \begin{array}{lll}
@@ -189,8 +173,6 @@ element mass matrix obtained from adaptive integration, without having to separa
 calculate the total mass.
 
 \begin{equation}
-	M_{ij}^{e,HRZ} = \left\{ \begin{array}{ll}
-	\frac{\sum_k \sum_l M_{kl}^e}{\sum_n M_{nn}^e} M_{ij}^e & i=j \\
-	0 & i \neq j \\
-	\end{array} \right.
+	M_{ii}^{e,HRZ} =
+	\frac{\sum_k \sum_l M_{kl}^e}{\sum_n M_{nn}^e} M_{ii}^e
 \end{equation}
