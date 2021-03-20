@@ -22,14 +22,3 @@ While adaptive integration schemes can be used to accurately compute the element
 \end{itemize}
 
 A candidate for the former is moment fitting, while the latter approach is covered by mass lumping schemes that have extensive literature.
-
-Cells that have points in both the fictitious and physical domains (cut cells)
-need a modified integration scheme to resolve the boundary of the geometry. As
-mentioned in \ref{section:fcm}, the most straightforward method is to use a
-space partitioning scheme and perform the quadrature on the resulting subcells.
-However, the additional integration points no longer coincide with roots of the
-basis functions, which in turn lead to non-zero off-diagonal components in the
-% TODO: add figure of a 1D cut cell with its additional integration points
-mass matrix. As this defeats the purpose of the SCM, either the integration
-scheme should be modified such that the number of integration points and their
-positions are retained, or a post-integration lumping needs to be applied.

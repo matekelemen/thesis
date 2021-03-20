@@ -118,4 +118,9 @@ M.~Joulaian, S.~Duczek, U.~Gabbert, A.~D{\"u}ster.
 \newblock Finite and spectral cell method for wave propagation in heterogeneous materials.
 \newblock {\em Computational Mechanics}, 54(661-675), 2014.
 
+\bibitem[ZL13]{Zhang2013}
+W.~Zhang, J.~Luo
+\newblock Full-waveform Velocity Inversion Based on the Acoustic Wave Equation
+\newblock {\em American Journal of Computational Mechanics}, 3 (13-20), 2013
+
 \end{thebibliography}
