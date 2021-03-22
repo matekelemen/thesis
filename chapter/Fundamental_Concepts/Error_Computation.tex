@@ -92,7 +92,7 @@ t^a_u \approx \cfrac{ \int_0^{t_{max}} t e_u^q(t) dt }{ \int_0^{t_{max}} e_u^q(t
 	\label{fig:envelope_centroid_offset_squared}
 \end{figure}
 
-As the exponent $q$ is increased $t^a_u$ approaches $argmax(|u(t)|)$, effectively neglecting all oscillations and solely depending on the absolute maximum of the displacement history. This property is generally not desired but can be useful for models where the relation between the discretization and spurious oscillations is chaotic. To avoid round-off errors and increase performance, this approximation is computed using an alternative method instead. Since the displacement history is only available at discrete time points $t_k$, the accuracy of merely choosing the time at which the sampled displacement has an absolute maximum would be greatly influenced by the size of the time steps $\Delta t$. Thus, the location of a cubic interpolating spline's extremum is used instead.
+As the exponent $q$ is increased $t^a_u$ approaches $argmax(|u(t)|)$, effectively neglecting all oscillations and solely depending on the absolute maximum of the displacement history. This property is generally not desired but can be useful for models where the relation between the discretization and spurious oscillations is chaotic. To avoid round-off errors and increase performance, this approximation is computed using an alternative method instead. Since the displacement history is only available at discrete time points $t_k$, the accuracy of merely choosing the time at which the sampled displacement has an absolute maximum would be greatly influenced by the size of the time steps $\Delta t$. Thus, the extremum of a cubic interpolating spline $s(t)$ is used instead.
 
 \begin{figure}[h]
 	\centering
@@ -100,3 +100,13 @@ As the exponent $q$ is increased $t^a_u$ approaches $argmax(|u(t)|)$, effectivel
 	\caption{Time of arrival based on a cubic interpolating spline.}
 	\label{fig:time_of_arrival_spline_peak}
 \end{figure}
+
+Once the time of arrival is determined for both sample points, the relative error of the time of flight $\epsilon$ can calculated as follows:
+
+\begin{equation} \label{eq:time_of_flight_relative_error}
+	\epsilon = 1 - \cfrac
+		{ \left| t^a_{u_{P_1}} - t^a_{u_{P_0}} \right| }
+		{ \cfrac{|\overline{P_0 P_1}|}{c} }
+\end{equation}
+
+where $c = \sqrt{\frac{E}{\rho}}$ is the analytical wave speed.

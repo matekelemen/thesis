@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="bar_axis_aligned.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker3487"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL">
+      <path
+         transform="scale(0.8)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.58823529;fill:#000000;fill-opacity:0.58823529"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path3485" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker3327"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path3325"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.58823529;fill:#000000;fill-opacity:0.58823529"
+         transform="scale(-0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker3117"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path3115"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.58823529;fill:#000000;fill-opacity:0.58823529"
+         transform="scale(0.8)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2969"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleInL"
+       inkscape:collect="always">
+      <path
+         transform="scale(-0.8)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.58823529;fill:#000000;fill-opacity:0.58823529"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path2967" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker2525"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.8)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.58823529;fill:#000000;fill-opacity:0.58823529"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path2523" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleInL"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path2257"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.58823529;fill:#000000;fill-opacity:0.58823529"
+         transform="scale(-0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker1517"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path1515"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.39215686;fill:#000000;fill-opacity:0.39215686"
+         transform="scale(0.8)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker1373"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL"
+       inkscape:collect="always">
+      <path
+         transform="scale(0.8)"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.39215686;fill:#000000;fill-opacity:0.39215686"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path1371" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 148.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="210 : 148.5 : 1"
+       inkscape:persp3d-origin="105 : 99 : 1"
+       id="perspective2939" />
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker2846"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path2844"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.39215686;fill:#000000;fill-opacity:0.39215686"
+         transform="scale(0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutM"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path966"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.58823529;fill:#000000;fill-opacity:0.58823529"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleInM"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path957"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.58823529;fill:#000000;fill-opacity:0.58823529"
+         transform="scale(-0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutL"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path963"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:0.39215686;fill:#000000;fill-opacity:0.39215686"
+         transform="scale(0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path842"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path824"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutL-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path963-7"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="scale(0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleInM-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path957-1"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         transform="scale(-0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutM-7"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path966-8"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleInM-2-7"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path957-1-4"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         transform="scale(-0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutM-7-1"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path966-8-8"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleInM-2-9"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path957-1-7"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         transform="scale(-0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutM-7-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path966-8-3"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleInM-2-8"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path957-1-3"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         transform="scale(-0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="TriangleOutM-7-18"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path966-8-9"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         transform="scale(0.4)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleInL"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker3327-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3325-3"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         transform="scale(-0.8)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker3487-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutL">
+      <path
+         inkscape:connector-curvature="0"
+         transform="scale(0.8)"
+         style="fill:#000000;fill-opacity:0.58823529;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:0.58823529"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path3485-9" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="247.37959"
+     inkscape:cy="742.67926"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-grids="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="960"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;fill-opacity:0.19607843;stroke:none;stroke-width:0.56499994;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.39215686"
+       id="rect817"
+       width="100"
+       height="20"
+       x="20"
+       y="107"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999.96997"
+       inkscape:export-ydpi="999.96997"
+       ry="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.39215686;marker-end:url(#TriangleOutL)"
+       d="M 20,127 H 125"
+       id="path819"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999.96997"
+       inkscape:export-ydpi="999.96997" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="123.37798"
+       y="124.82626"
+       id="text2943"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999.96997"
+       inkscape:export-ydpi="999.96997"><tspan
+         sodipodi:role="line"
+         id="tspan2941"
+         x="123.37798"
+         y="124.82626"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">x</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.39215687;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#marker2846)"
+       d="M 20,117 V 96.999998"
+       id="path1112"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <rect
+       style="fill:#000000;fill-opacity:0.49019608;stroke:#000000;stroke-width:0.26499999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1126"
+       width="100"
+       height="8"
+       x="20"
+       y="113"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 20,107 H 120"
+       id="path1158"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 20,127 H 120"
+       id="path1158-4"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 20,127 V 107"
+       id="path1181"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 30,127 V 107"
+       id="path1181-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 40,127 V 107"
+       id="path1181-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 50,127 V 107"
+       id="path1181-3"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 60,127 V 107"
+       id="path1181-1"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 70,127 V 107"
+       id="path1181-75"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 80,127 V 107"
+       id="path1181-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 90,127 V 107"
+       id="path1181-62"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 100,127 V 107"
+       id="path1181-17"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 110,127 V 107"
+       id="path1181-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 120,127 V 107"
+       id="path1181-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="14.560267"
+       y="99.139137"
+       id="text2943-7"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999.96997"
+       inkscape:export-ydpi="999.96997"><tspan
+         sodipodi:role="line"
+         id="tspan2941-4"
+         x="14.560267"
+         y="99.139137"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">y</tspan></text>
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 20,117 H 120"
+       id="path1158-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="51.845737"
+       y="119.37794"
+       id="text4730-3"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999"><tspan
+         sodipodi:role="line"
+         id="tspan4728-1"
+         x="51.845737"
+         y="119.37794"
+         style="stroke-width:0.26458332"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           id="tspan4740-7">Ω</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           id="tspan4734-5">p</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="82.091614"
+       y="112.23604"
+       id="text4744-6"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999"><tspan
+         sodipodi:role="line"
+         id="tspan4742-2"
+         x="82.091614"
+         y="112.23604"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="tspan1305">Ω</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93888903px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           id="tspan1040">f</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 140,127 V 107"
+       id="path1181-8-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 150,127 V 107"
+       id="path1181-5-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 140,107 h 10"
+       id="path1325"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 140,127 h 10"
+       id="path1325-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#005293;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 140,117 h 10"
+       id="path1325-7-5"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.39215686;marker-end:url(#marker1373)"
+       d="m 140,127 15,0"
+       id="path1363"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.39215686;marker-end:url(#marker1517)"
+       d="m 140,127 0,-30"
+       id="path1507"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 140,113 h 10"
+       id="path1645"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 140,121 h 10"
+       id="path1647"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:#000000;fill-opacity:0.49019608;stroke:#000000;stroke-width:0.17885263;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.39215686"
+       d="m 529.67003,442.25703 v -14.55357 h 18.30357 18.30357 v 14.55357 14.55357 H 547.9736 529.67003 Z"
+       id="path1763"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:#000000;fill-opacity:0.19607843;stroke:#000000;stroke-width:0.17885263;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.39215686"
+       d="m 529.67003,415.73917 v -10.71429 h 18.30357 18.30357 v 10.71429 10.71429 H 547.9736 529.67003 Z"
+       id="path1765"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:#000000;fill-opacity:0.19607843;stroke:#000000;stroke-width:0.17885263;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.39215686"
+       d="m 529.67003,468.6856 v -10.80357 h 18.30357 18.30357 v 10.80357 10.80357 H 547.9736 529.67003 Z"
+       id="path1767"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999"
+       transform="scale(0.26458333)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="153.56656"
+       y="124.94495"
+       id="text2943-3"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999.96997"
+       inkscape:export-ydpi="999.96997"><tspan
+         sodipodi:role="line"
+         id="tspan2941-8"
+         x="153.56656"
+         y="124.94495"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">z</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="134.82924"
+       y="100.03683"
+       id="text2943-7-8"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999.96997"
+       inkscape:export-ydpi="999.96997"><tspan
+         sodipodi:role="line"
+         id="tspan2941-4-3"
+         x="134.82924"
+         y="100.03683"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">y</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.58823532;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 20,127 v 10"
+       id="path2093"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529"
+       d="m 120,127 v 10"
+       id="path2093-1"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529"
+       d="m 140,127 v 10"
+       id="path2093-8"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529"
+       d="m 150,127 v 10"
+       id="path2093-9"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529;marker-start:url(#TriangleInL);marker-end:url(#marker2525)"
+       d="m 21,135 h 98"
+       id="path2122"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.165;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.58823532;stroke-miterlimit:4;stroke-dasharray:none;marker-start:url(#marker2969);marker-end:url(#marker3117)"
+       d="m 141,135 h 8"
+       id="path2959"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529"
+       d="M 20,127 5,127"
+       id="path3287"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529"
+       d="M 20,107 H 5"
+       id="path3287-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529;marker-start:url(#marker3327);marker-end:url(#marker3487)"
+       d="m 7,108 v 18"
+       id="path2093-4"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="57.97562"
+       y="134.18878"
+       id="text3647"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999"><tspan
+         sodipodi:role="line"
+         id="tspan3645"
+         x="57.97562"
+         y="134.18878"
+         style="stroke-width:0.26458332"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="tspan3653">L<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="tspan3703">x</tspan>=n</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="tspan3651">x</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="tspan3655">h</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+           id="tspan3649">x</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-122.38459"
+       y="5.0922298"
+       id="text3647-3"
+       transform="rotate(-90.184295)"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999"><tspan
+         sodipodi:role="line"
+         id="tspan3645-3"
+         x="-122.38459"
+         y="5.0922298"
+         style="stroke-width:0.26458332"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           id="tspan3653-3">2h</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           id="tspan3649-0">y</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="141.97935"
+       y="133.9117"
+       id="text3647-4"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999"><tspan
+         sodipodi:role="line"
+         id="tspan3645-8"
+         x="141.97935"
+         y="133.9117"
+         style="stroke-width:0.26458332"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           id="tspan3653-8">L</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           id="tspan3649-7">z</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529"
+       d="M 20,121 H 14"
+       id="path3287-64"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529"
+       d="M 20,113 H 14"
+       id="path3287-64-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.58823529;marker-start:url(#marker3327-0);marker-end:url(#marker3487-0)"
+       d="m 16,114 0,6"
+       id="path2093-4-2"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-120.17589"
+       y="14.320181"
+       id="text3647-3-5"
+       transform="rotate(-90.184295)"
+       inkscape:export-filename="/home/mate/bar_axis_aligned.png"
+       inkscape:export-xdpi="999"
+       inkscape:export-ydpi="999"><tspan
+         sodipodi:role="line"
+         id="tspan3645-3-4"
+         x="-120.17589"
+         y="14.320181"
+         style="stroke-width:0.26458332"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           id="tspan3653-3-0">L</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+           id="tspan3649-0-5">y</tspan></tspan></text>
+  </g>
+</svg>

@@ -16,10 +16,11 @@ being the preservation each element's total mass. The downside of mass lumping
 techniques is that they are generally heuristic approaches and as such, their
 accuracy may not improve with p-refinement in some cases. Moreover, their applicability is usually
 restricted to certain types of elements or basis functions, and may provide negative
-masses when these criteria are not met, leading to divergent solutions \cite{Duczek2019}.
-As the SCM's viability hinges on the quality of diagonalized element mass matrices
-of cut cells, choosing an appropriate lumping scheme is essential. Three considered
+masses when these criteria are not met, leading to divergent solutions \cite{Duczek2019}. Three considered
 methods are presented in the following sections.
+
+As the SCM's viability hinges on the quality of diagonalized element mass matrices
+of cut cells, choosing an appropriate lumping scheme is essential. To prevent underintegration, Gauss-Legendre-based adaptive quadrature is used for cut cells, since diagonalization through a choice of integration points is no longer possible.
 
 %______________________________________________________________________________
 %
@@ -130,13 +131,13 @@ Functions in an ansatz space constructed from the tensor product of basis functi
 retain partition of unity:
 
 \begin{equation*}
-\begin{array}{lll}
+\begin{array}{rll}
 	\sum_k L_k(x) \equiv 1 & x \in [a,b] & a,b \in \rm I\!R \\
 \end{array}
 \end{equation*}
 
 \begin{equation}
-\begin{array}{ll}
+\begin{array}{rl}
 	N_i &= N_{3^2r + 3s + t} = L_r L_s L_t \\
 	\\
 	\sum_i N_i
