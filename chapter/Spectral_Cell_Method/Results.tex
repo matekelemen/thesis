@@ -19,7 +19,7 @@ In this section the spectral cell method is applied to a simple problem describe
 
 A simple straight bar model introduced in \ref{section:error_calculation} is considered. To allow a fictitious domain extension and analyze the behaviour of the SCM, the problem is modeled in 3D instead of one.
 
-\begin{figure}[h]
+\begin{figure}[!h]
 	\centering
 	\includegraphics[height=3.5cm]{figures/bar_axis_aligned}
 	\caption{Embedded axis-aligned bar and its discretization.}
@@ -106,8 +106,315 @@ For all following cases, the number of elements in $x$-direction $n_x=30$ is fix
 
 Note, that the mesh conforms to the boundary for $r=0$, which means that no adaptive integration or lumping is performed, and the solution is identical to that of the standard SEM. This case can be used as reference.
 
-Without lumping, the solutions shown in figure \ref{fig:aligned_bar_fill_ratio_no_lumping} converge as expected. Spurious oscillations decay as $p$ increases and the effective wave speed approaches the analytical one. The fill ratio has little impact on the results of embedded setups, but the boundary-conforming case visibly differs from them. This is likely due to the fact that the material in the fictitious domain has non-zero material parameters and introduces errors in the adaptive integration. At higher polynomial orders however, these seem to balance other discretization errors.
+Without lumping, the solutions shown in figure \ref{fig:aligned_bar_fill_ratio_convergence_no_lumping} converge as expected. Spurious oscillations decay as $p$ increases and the effective wave speed approaches the analytical one. The fill ratio has little impact on the results of embedded setups, but the boundary-conforming case visibly differs from them. This is due to the fact that the boundary-conforming case consists of uncut cells whose mass matrices are integrated using Lobatto quadrature, and are therefore underintegrated. On the other hand, cut cells in the non-conforming cases are exactly integrated using the adaptive scheme based on Gauss-Legendre quadrature.
 Since no lumping is performed, the mass matrix has non-zero off-diagonal entries from the adaptive integration, thus leading to less efficient time integration.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[height=6cm]{inkscape/fill_ratio_no_lumping/convergence}
+	\caption{Relative time-of-flight error for p-refinement on different fill ratios without lumping. The embedded cases $r \neq 0$ overlap within line width.}
+	\label{fig:aligned_bar_fill_ratio_convergence_no_lumping}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_no_lumping/r0_p1}}
+		\caption{$r=0 \ \ \ \ p=1$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_no_lumping/r0_p4}}
+		\caption{$r=0 \ \ \ \ p=4$}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_no_lumping/r4_p1}}
+		\caption{$$r=4 \ \ \ \ p=1$$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_no_lumping/r4_p4}}
+		\caption{$$r=4 \ \ \ \ p=4$$}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_no_lumping/legend}}
+	\end{subfigure}
+	\caption{Displacement history at the two points for $r,p \in \{1,4\}$ and no lumping.}
+	\label{fig:aligned_bar_fill_ratio_displacement_no_lumping}
+\end{figure}
+
+Next, HRZ lumping is applied to the same scenarios. As seen in figure \ref{fig:aligned_bar_fill_ratio_convergence_hrz}, this method is unable to consistently benefit from p-refinement and does not converge in general. To gain a better understanding of why this is the case, the displacements at the two sample points and then on the entire model are studied.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[height=6cm]{inkscape/fill_ratio_hrz/convergence}
+	\caption{Relative time-of-flight error for p-refinement on different fill ratios with HRZ lumping.}
+	\label{fig:aligned_bar_fill_ratio_convergence_hrz}
+\end{figure}
+
+Figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz} shows the displacement histories at the two sample points for a fill ratio of $\eta=\frac{1}{2}$ with $p$ ranging from 1 to 4. At first, increasing the order of the basis seem to attenuate the magnitude of spurious oscillations, but at higher orders this trend is clearly disproven. An interesting observation is that the oscillations occur exclusively after the main wavelet, and resemble decaying harmonic functions.
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_hrz/r1_p1}}
+		\caption{$r=1 \ \ \ \ p=1$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_hrz/r1_p2}}
+		\caption{$r=1 \ \ \ \ p=2$}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_hrz/r1_p3}}
+		\caption{$r=1 \ \ \ \ p=3$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_hrz/r1_p4}}
+		\caption{$r=1 \ \ \ \ p=4$}
+		\label{fig:aligned_bar_fill_ratio_displacement_hrz_r1_p4}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_no_lumping/legend}}
+	\end{subfigure}
+	\caption{Displacement history at the two points for $r=1$, $p \in \{1,...,4\}$ and HRZ lumping.}
+	\label{fig:aligned_bar_fill_ratio_displacement_hrz}
+\end{figure}
+
+Figure \ref{fig:fill_ratio_hrz_displacement_field} compares the displacement field with HRZ lumping to the solution without lumping at different time points, for the setup $r=1$ and $p=4$. The solution without lumping can be regarded as reference, and as expected, the displacement is constant in $y$-direction, even in the fictitious domain. The wavelet propagates in the $x$-direction without skewing, and no reflections occur on the boundary between the physical and fictitious domains. In contrast, HRZ lumping introduces a variance in the $y$-direction. It is important to note that for better visibility, the displacement color range is adjusted for the displacement magnitudes in the physical domain $\pm 7\cdot 10^{-5}$, but this range is almost an order of magnitude greater in the fictitious domain $\pm 2.5 \cdot 10^{-4}$. Furthermore, the wave speed appears to differ in $\Omega_f$ which leads to a wave front propagating in $y$-direction, endlessly reflected between the boundary of the domains and the mesh. Due to the artificial coupling between the physical and fictitious domains introduced by HRZ lumping, these waves propagate into the physical domain as well, albeit with reduced amplitude. The resulting spurious oscillations can be clearly observed in the displacement history of the sample points as well, shown in figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz_r1_p4}. Their magnitude, frequency, and phase relative to wavelet depend on the size of the fictitious domain and the material properties inside it, defined by $\beta$.
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_hrz/animation.0001}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_none/animation.0001}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_hrz/animation.0002}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_none/animation.0002}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_hrz/animation.0003}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_none/animation.0003}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_hrz/animation.0004}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_none/animation.0004}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_hrz/animation.0005}}
+		\caption{HRZ lumping}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_none/animation.0005}}
+		\caption{no lumping}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.65\textwidth]{figures/paraview_aligned_hrz/legend}
+	\end{subfigure}
+	\caption{Cropped top view of the displacement field at $t=\{0.04, \ 0.08, \ 0.12, \ 0.16, \ 0.2\}$ with HRZ lumping (left) and without lumping (right). The fill ratio $\eta=\frac{1}{2}$ and basis order $p=4$ is identical for both cases.}
+	\label{fig:fill_ratio_hrz_displacement_field}
+\end{figure}
+
+Finally, density scaling is studied for the same setup. Considering that it similar to HRZ lumping but makes more simplifications, the fact that it performs worse is not surprising. However, an interesting property can be observed in the displacement histories that may help to better understand why neither lumping schemes are viable. Originally, both the density $\rho$ and Young's modulus $E$ are multiplied by $10^{-\beta}$ in the fictitious domain, which means that the wave speed remains constant over the entirety of the model. As mentioned in \ref{subsection:density_scaling_lumping} however, density scaling imposes a uniform mass distribution on cut cells. Apart from an introducing artificial coupling between domains similar to HRZ lumping, this means that the effective wave speed becomes higher in the physical domain while lower in the fictitious one. Furthermore, this speed difference varies from cell to cell, depending on their individual fill ratios. Though combined with other errors, this behaviour is well demonstrated in figure \ref{fig:aligned_bar_fill_ratio_displacement_density_scaling}. As the fill ratio decreases, the propagating wavelet becomes faster in the physical domain. For fill ratios of $\eta=\frac{1}{8}$ and $\eta={1}{16}$, the wave is reflected from the right boundary and even reaches $P_2$ on its way back before $t_{max}$.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[height=5cm]{inkscape/fill_ratio_density_scaling/convergence}
+	\caption{Relative time-of-flight error for p-refinement on different fill ratios with density scaling.}
+	\label{fig:aligned_bar_fill_ratio_convergence_density_scaling}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_density_scaling/r1_p4}}
+		\caption{$r=1 \ \ \ \ p=4$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_density_scaling/r2_p4}}
+		\caption{$r=2 \ \ \ \ p=4$}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_density_scaling/r3_p4}}
+		\caption{$r=3 \ \ \ \ p=4$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_density_scaling/r4_p4}}
+		\caption{$r=4 \ \ \ \ p=4$}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_density_scaling/legend}}
+	\end{subfigure}
+	\caption{Displacement history at the two points for $r \in \{1,...,4\}$, $p = 4$ and density scaling.}
+	\label{fig:aligned_bar_fill_ratio_displacement_density_scaling}
+\end{figure}
+
+In conclusion, neither lumping schemes are viable. An interesting property of both methods is that due to the artificially coupled domains, the magnitude, frequency, and phase of the spurious oscillations vary with $\eta$ and $p$. To show how great and non-trivial the impact the physics in the fictitious domain has on the physical one, the solution's dependence on the fictitious exponent $\beta$ is analyzed in the next section. As density scaling is similar to HRZ lumping but clearly inferior, it is not studied in the rest of this thesis.
+
+%______________________________________________________________________________
+% SUB-SUB-SECTION
+\subsubsection*{Fictitious exponent}
+\label{section:fictitious_exponent}
+%______________________________________________________________________________
+
+Introduced in equation \ref{eq:indicator_function}, the fictitious exponent $\beta$ defines the relation between the material parameters in the physical and fictitious domains. Its original purpose in the FCM is to avoid ill conditioned structural matrices for badly cut cells. Small values lead to more stable numerics but less accurate physics, thus one has to find an optimal compromise between the two types of errors. That said, there is no detailed study on its effect, and its value is often arbitrarily chosen between 3 and 10 \cite{Parvizian2007}. Due to lumping however, the solution in the fictitious domain has a greater impact, making $\beta$ more important in the SCM.
+
+In the following examples, the fill ratio $\eta = \frac{1}{4}$ and basis order $p=4$ remain constant while the $\beta$ varies between 0 and 10. Since the focus is now on the residual oscillations, the time of arrival is computed based on the envelope of the displacement history. The specifics of this process and reason for doing so is discussed in \ref{section:error_calculation}.
+
+Figure \ref{fig:beta_convergence} shows how the resulting error changes with the fictitious exponent. At $\beta = 0$, the material in the two domains are identical, thus the stiffness and mass matrices are consistent. Lumping has minimal effect, and no oscillations occur in this case.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[height=4.5cm]{inkscape/beta/convergence}
+	\caption{Relative time-of-flight error for varying fictitious exponents $\beta$.}
+	\label{fig:beta_convergence}
+\end{figure}
+
+Although for this specific set of configurations, oscillations occur in a range of $\beta$ but disappear completely for $\beta > 6$. The same does not hold true in general, and spurious oscillations persist for large fictitious exponents as well. The only general rule is that no such oscillations can be observed for uniform material parameters ($\beta=0$) and that the behaviour of the solution greatly depends on $\beta$.
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/beta/beta_0.0}}
+		\caption{$\beta=0$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/beta/beta_3.5}}
+		\caption{$\beta=3.5$}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/beta/beta_4.5}}
+		\caption{$\beta=4.5$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/beta/beta_10.0}}
+		\caption{$\beta=10$}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/beta/legend}}
+	\end{subfigure}
+	\caption{Displacement history at the two points for $r=2$, $p = 4$ and HRZ lumping.}
+	\label{fig:aligned_bar_displacement_beta}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_3.5/animation.0001}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_4.5/animation.0001}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_3.5/animation.0002}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_4.5/animation.0002}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_3.5/animation.0003}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_4.5/animation.0003}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_3.5/animation.0004}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_4.5/animation.0004}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_3.5/animation.0005}}
+		\caption{$\beta=3.5$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_aligned_beta_4.5/animation.0005}}
+		\caption{$\beta=4.5$}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.55\textwidth]{figures/paraview_aligned_beta_3.5/legend}
+	\end{subfigure}
+	\caption{Cropped top view of the displacement field at $t=\{0.04, \ 0.08, \ 0.12, \ 0.16, \ 0.2\}$, $\beta = \{3.5, \ 4.5\}$, and HRZ lumping. The fill ratio $\eta=\frac{1}{4}$ and basis order $p=4$ is identical for both cases.}
+	\label{fig:hrz_displacement_field_beta}
+\end{figure}
 
 %______________________________________________________________________________
 %
@@ -116,6 +423,8 @@ Since no lumping is performed, the mass matrix has non-zero off-diagonal entries
 \label{section:rotated_bar}
 %
 %______________________________________________________________________________
+
+
 
 %______________________________________________________________________________
 %
