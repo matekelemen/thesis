@@ -70,7 +70,7 @@ The spatial discretization is carried out by approximating the solution field an
 \begin{equation} \label{eq:wave_equation_spatially_discretized_test}
 	\int_{\Omega} \sum_i N_i \hat v_i \ \rho \sum_j N_j \cfrac{\partial^2 \hat u_j}{\partial t^2} \ d \mathbf x
 	+
-	\int_{\Omega} \sum_i \nabla N_i \hat v_i E \sum_j \nabla N_j \hat u_j \ d \mathbf x
+	\int_{\Omega} \sum_i \left( \nabla N_i \hat v_i \right)^T E \sum_j \nabla N_j \hat u_j \ d \mathbf x
 	=
 	\int_{\Omega} f \sum_i N_i \hat v_i d \mathbf x
 \end{equation}
@@ -80,7 +80,7 @@ Since the weak form \ref{eq:wave_equation_weak_form} must hold for any $v \in V_
 \begin{equation} \label{eq:wave_equation_spatially_discretized}
 	\int_{\Omega} N_i \rho N_j d \mathbf x \ \cfrac{\partial^2 \hat u_j}{\partial t^2}
 	+
-	\int_{\Omega} \nabla N_i \ E \ \nabla N_j d \mathbf x \ \hat u_j
+	\int_{\Omega} \left( \nabla N_i \ \right)^T E \ \nabla N_j d \mathbf x \ \hat u_j
 	=
 	f_t \int_{\Omega} f_x N_i d \mathbf x
 \end{equation}
@@ -98,7 +98,7 @@ f_t f_i
 \begin{equation} \label{eq:structural_components}
 	\begin{array}{rl}
 		M_{ij} &= \ \int_{\Omega} N_i \rho N_j dx \\
-		K_{ij} &= \ \int_{\Omega} \nabla N_i E \nabla N_j dx \\
+		K_{ij} &= \ \int_{\Omega} \left( \nabla N_i \right)^T E \nabla N_j dx \\
 		f_{i}  &= \ \int_{\Omega} f_x N_i dx \\
 	\end{array}
 \end{equation}

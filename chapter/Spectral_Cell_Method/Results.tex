@@ -75,7 +75,7 @@ Since the mass matrices of uncut cells are inherently diagonal, lumping schemes 
 	\eta = \cfrac{L_y}{2h_y}
 \end{equation}
 
-This value is identical for every cell in the model. To make sure that no errors originate from the adaptive nature of integration, bar's height is always set such that an octree of depth $r$ can perfectly capture its boundary. More precisely, the bar is shrunk sequentially by powers of two: $L_y = 2 ^{-r} \ 2h_y$
+This value is identical for every cell in the model. To make sure that no errors originate from the numerical integration's adaptive nature, the bar's height is always set such that an octree of depth $r$ can perfectly capture its boundary. More precisely, the bar is shrunk sequentially by powers of two: $L_y = 2 ^{-r} \ 2h_y$
 
 \begin{center}
 \begin{minipage}[b]{0.45\textwidth}
@@ -98,7 +98,7 @@ This value is identical for every cell in the model. To make sure that no errors
 \begin{minipage}[b]{0.45\textwidth}
 	\centering
 	\includegraphics[width=0.75\textwidth]{figures/cell_fill_ratio}
-	\captionof{figure}{Example cell for different bar heights.}
+	\captionof{figure}{Example bottom left cell for different bar heights.}
 \end{minipage}
 \end{center}
 
@@ -133,13 +133,13 @@ Since no lumping is performed, the mass matrix has non-zero off-diagonal entries
 	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
 		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_no_lumping/r4_p1}}
-		\caption{$$r=4 \ \ \ \ p=1$$}
+		\caption{$r=4 \ \ \ \ p=1$}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
 		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/fill_ratio_no_lumping/r4_p4}}
-		\caption{$$r=4 \ \ \ \ p=4$$}
+		\caption{$r=4 \ \ \ \ p=4$}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.49\textwidth}
 		\centering
@@ -158,7 +158,7 @@ Next, HRZ lumping is applied to the same scenarios. As seen in figure \ref{fig:a
 	\label{fig:aligned_bar_fill_ratio_convergence_hrz}
 \end{figure}
 
-Figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz} shows the displacement histories at the two sample points for a fill ratio of $\eta=\frac{1}{2}$ with $p$ ranging from 1 to 4. At first, increasing the order of the basis seem to attenuate the magnitude of spurious oscillations, but at higher orders this trend is clearly disproven. An interesting observation is that the oscillations occur exclusively after the main wavelet, and resemble decaying harmonic functions.
+Figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz} shows the displacement histories at the two sample points for a fill ratio of $\eta=\frac{1}{2}$ with $p$ ranging from 1 to 4. At first, increasing the order of the basis seem to attenuate the magnitude of spurious oscillations, but at higher orders this trend is clearly disproven. An interesting observation is that the oscillations occur exclusively after the main wavelet, and resemble decaying harmonic functions. Their source can be better understood by studying how the displacement field changes over time.
 
 \begin{figure}[!h]
 	\centering
@@ -194,7 +194,7 @@ Figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz} shows the displacement 
 	\label{fig:aligned_bar_fill_ratio_displacement_hrz}
 \end{figure}
 
-Figure \ref{fig:fill_ratio_hrz_displacement_field} compares the displacement field with HRZ lumping to the solution without lumping at different time points, for the setup $r=1$ and $p=4$. The solution without lumping can be regarded as reference, and as expected, the displacement is constant in $y$-direction, even in the fictitious domain. The wavelet propagates in the $x$-direction without skewing, and no reflections occur on the boundary between the physical and fictitious domains. In contrast, HRZ lumping introduces a variance in the $y$-direction. It is important to note that for better visibility, the displacement color range is adjusted for the displacement magnitudes in the physical domain $\pm 7\cdot 10^{-5}$, but this range is almost an order of magnitude greater in the fictitious domain $\pm 2.5 \cdot 10^{-4}$. Furthermore, the wave speed appears to differ in $\Omega_f$ which leads to a wave front propagating in $y$-direction, endlessly reflected between the boundary of the domains and the mesh. Due to the artificial coupling between the physical and fictitious domains introduced by HRZ lumping, these waves propagate into the physical domain as well, albeit with reduced amplitude. The resulting spurious oscillations can be clearly observed in the displacement history of the sample points as well, shown in figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz_r1_p4}. Their magnitude, frequency, and phase relative to wavelet depend on the size of the fictitious domain and the material properties inside it, defined by $\beta$.
+Figure \ref{fig:fill_ratio_hrz_displacement_field} compares the displacement field with HRZ lumping to the solution without lumping at different time points, for the setup $r=1$ and $p=4$. The solution without lumping can be regarded as reference, and as expected, the displacement is constant in $y$-direction, even in the fictitious domain. The wavelet propagates in the $x$-direction without skewing, and no reflections occur on the boundary between the physical and fictitious domains. In contrast, HRZ lumping introduces a variance in the $y$-direction. It is important to note that for better visibility, the displacement color range is adjusted for magnitudes in the physical domain $\pm 7\cdot 10^{-5}$, but this range is almost an order of magnitude greater in the fictitious domain $\pm 2.5 \cdot 10^{-4}$. Furthermore, the wave speed appears to differ in $\Omega_f$ which leads to a wave front propagating in $y$-direction, endlessly reflected between the boundary of the domains and the mesh. Due to the artificial coupling between the physical and fictitious domains introduced by HRZ lumping, these waves propagate into the physical domain as well, albeit with reduced amplitude. The resulting spurious oscillations can be clearly observed in the displacement history of the sample points as well, shown in figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz_r1_p4}. Their magnitude, frequency, and phase relative to wavelet depend on the size of the fictitious domain and the material properties inside it, defined by $\beta$.
 
 \begin{figure}[!h]
 	\centering
@@ -257,7 +257,7 @@ Figure \ref{fig:fill_ratio_hrz_displacement_field} compares the displacement fie
 	\label{fig:fill_ratio_hrz_displacement_field}
 \end{figure}
 
-Finally, density scaling is studied for the same setup. Considering that it similar to HRZ lumping but makes more simplifications, the fact that it performs worse is not surprising. However, an interesting property can be observed in the displacement histories that may help to better understand why neither lumping schemes are viable. Originally, both the density $\rho$ and Young's modulus $E$ are multiplied by $10^{-\beta}$ in the fictitious domain, which means that the wave speed remains constant over the entirety of the model. As mentioned in \ref{subsection:density_scaling_lumping} however, density scaling imposes a uniform mass distribution on cut cells. Apart from an introducing artificial coupling between domains similar to HRZ lumping, this means that the effective wave speed becomes higher in the physical domain while lower in the fictitious one. Furthermore, this speed difference varies from cell to cell, depending on their individual fill ratios. Though combined with other errors, this behaviour is well demonstrated in figure \ref{fig:aligned_bar_fill_ratio_displacement_density_scaling}. As the fill ratio decreases, the propagating wavelet becomes faster in the physical domain. For fill ratios of $\eta=\frac{1}{8}$ and $\eta={1}{16}$, the wave is reflected from the right boundary and even reaches $P_2$ on its way back before $t_{max}$.
+Finally, density scaling is studied for the same setup. Considering that it similar to HRZ lumping but makes more simplifications, the fact that it performs worse is not surprising. However, an interesting property can be observed in the displacement histories that may help better understand why neither lumping schemes are viable. Originally, both the density $\rho$ and Young's modulus $E$ are multiplied by $10^{-\beta}$ in the fictitious domain, which means that the wave speed remains constant over the entirety of the model. As mentioned in \ref{subsection:density_scaling_lumping} however, density scaling imposes a uniform mass distribution on cut cells. Apart from introducing an artificial coupling between domains similar to HRZ lumping, this means that the effective wave speed becomes higher in the physical domain while lower in the fictitious one. Furthermore, this speed difference varies from cell to cell, depending on their individual fill ratios. Though combined with other errors, this behaviour is well demonstrated in figure \ref{fig:aligned_bar_fill_ratio_displacement_density_scaling}. As the fill ratio decreases, the propagating wavelet becomes faster in the physical domain. For fill ratios of $\eta=\frac{1}{8}$ and $\eta=\frac{1}{16}$, the wave is reflected from the right boundary and even reaches $P_2$ on its way back before $t_{max}$.
 
 \begin{figure}[!h]
 	\centering
@@ -299,7 +299,7 @@ Finally, density scaling is studied for the same setup. Considering that it simi
 	\label{fig:aligned_bar_fill_ratio_displacement_density_scaling}
 \end{figure}
 
-In conclusion, neither lumping schemes are viable. An interesting property of both methods is that due to the artificially coupled domains, the magnitude, frequency, and phase of the spurious oscillations vary with $\eta$ and $p$. To show how great and non-trivial the impact the physics in the fictitious domain has on the physical one, the solution's dependence on the fictitious exponent $\beta$ is analyzed in the next section. As density scaling is similar to HRZ lumping but clearly inferior, it is not studied in the rest of this thesis.
+In conclusion, neither lumping schemes are viable. An interesting property of both methods is that due to the artificially coupled domains, the magnitude, frequency, and phase of the spurious oscillations vary with $\eta$ and $p$. To show how great and non-trivial the impact the displacement in the fictitious domain has on the physical one, the solution's dependence on the fictitious exponent $\beta$ is analyzed in the next section. As density scaling is similar to HRZ lumping but clearly inferior, it is not studied in the rest of this thesis.
 
 %______________________________________________________________________________
 % SUB-SUB-SECTION
@@ -311,7 +311,9 @@ Introduced in equation \ref{eq:indicator_function}, the fictitious exponent $\be
 
 In the following examples, the fill ratio $\eta = \frac{1}{4}$ and basis order $p=4$ remain constant while the $\beta$ varies between 0 and 10. Since the focus is now on the residual oscillations, the time of arrival is computed based on the envelope of the displacement history. The specifics of this process and reason for doing so is discussed in \ref{section:error_calculation}.
 
-Figure \ref{fig:beta_convergence} shows how the resulting error changes with the fictitious exponent. At $\beta = 0$, the material in the two domains are identical, thus the stiffness and mass matrices are consistent. Lumping has minimal effect, and no oscillations occur in this case.
+Figure \ref{fig:beta_convergence} shows how the resulting error changes with the fictitious exponent. At $\beta = 0$, the material in the two domains are identical, thus the stiffness and mass matrices are consistent. Lumping has minimal effect, and no oscillations occur in this case. In the range $\beta \in [2,\ 6]$ however, oscillations appear and vary in magnitude, frequency, and phase.
+
+The source of these oscillations in the fictitious domain and their varying wavelengths can be observed in figure \ref{fig:hrz_displacement_field_beta}, which compares the displacement fields progress over time for $\beta=3.5$ and $\beta=4.5$. Note, that unlike in figure \ref{fig:fill_ratio_hrz_displacement_field}, the color scale covers the entirety of the displacement magnitude in this case, in order to focus on the fictitious domain.
 
 \begin{figure}[!h]
 	\centering
@@ -319,8 +321,6 @@ Figure \ref{fig:beta_convergence} shows how the resulting error changes with the
 	\caption{Relative time-of-flight error for varying fictitious exponents $\beta$.}
 	\label{fig:beta_convergence}
 \end{figure}
-
-Although for this specific set of configurations, oscillations occur in a range of $\beta$ but disappear completely for $\beta > 6$. The same does not hold true in general, and spurious oscillations persist for large fictitious exponents as well. The only general rule is that no such oscillations can be observed for uniform material parameters ($\beta=0$) and that the behaviour of the solution greatly depends on $\beta$.
 
 \begin{figure}[!h]
 	\centering
@@ -351,7 +351,7 @@ Although for this specific set of configurations, oscillations occur in a range 
 		\centering
 		\raisebox{-\height}{\includegraphics[width=\textwidth]{inkscape/beta/legend}}
 	\end{subfigure}
-	\caption{Displacement history at the two points for $r=2$, $p = 4$ and HRZ lumping.}
+	\caption{Displacement history at the two points for $\eta=\frac{1}{4}$, $p = 4$ and HRZ lumping.}
 	\label{fig:aligned_bar_displacement_beta}
 \end{figure}
 
@@ -412,9 +412,11 @@ Although for this specific set of configurations, oscillations occur in a range 
 		\centering
 		\includegraphics[width=0.55\textwidth]{figures/paraview_aligned_beta_3.5/legend}
 	\end{subfigure}
-	\caption{Cropped top view of the displacement field at $t=\{0.04, \ 0.08, \ 0.12, \ 0.16, \ 0.2\}$, $\beta = \{3.5, \ 4.5\}$, and HRZ lumping. The fill ratio $\eta=\frac{1}{4}$ and basis order $p=4$ is identical for both cases.}
+	\caption{Cropped top view of the displacement field at $t=\{0.04, \ 0.08, \ 0.12, \ 0.16, \ 0.2\}$, $\beta = \{3.5, \ 4.5\}$ with HRZ lumping. The fill ratio $\eta=\frac{1}{4}$ and basis order $p=4$ is identical for both cases.}
 	\label{fig:hrz_displacement_field_beta}
 \end{figure}
+
+Although for this specific set of configurations, oscillations occur in a range of $\beta$ but disappear completely for $\beta > 6$. The same does not hold true in general, and spurious oscillations persist for large fictitious exponents as well. The only general rule is that no such oscillations can be observed for uniform material parameters ($\beta=0$) and that the behaviour of the solution greatly depends on $\beta$.
 
 %______________________________________________________________________________
 %
@@ -433,3 +435,6 @@ Although for this specific set of configurations, oscillations occur in a range 
 \label{section:complex_geometry}
 %
 %______________________________________________________________________________
+
+The examples so far offered little variety in cell boundary shapes and fill ratios, which may bias the conclusions drawn from their results. To see how the method with HRZ lumping performs in a more practical setting, a geometrically more complex model is studied that provides a variety of fill ratios.
+
