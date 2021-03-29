@@ -6,9 +6,11 @@
 \label{section:applications}
 %
 %______________________________________________________________________________
-What impact does this thesis have? How and where can its results be used?
-Find FE applications which inherently need a lot of time steps and most computational time is spent there, or which otherwise benefit from explicit time integration. I am probably restricted to linear models since nonlinear ones will spend much more time updating their structural matrices than performing time steps.
-Examples:
-Full waveform inversion.
-% TODO: collect more possible application examples
-% TODO: section:applications
+
+Applications benefiting from such an approach address linear dynamic problems with high resolution requirements in time on complex domains, advanced geometric representation, or procedurally modified geometries.
+
+High frequency wave propagation analysis in open cell foams, porous structures, or heterogeneous materials such as sandwich structures or other composites are all prime examples. Meshing such models is either impossible or immensely time consuming, resulting in unnecessarily numerous degrees of freedom that lead to high computational demand in both memory and processing power. Thus, a fictitious domain approach is evidently more appropriate. Furthermore, a high frequency analysis fundamentally restricts the size of time steps in order to correctly resolve the propagating waves, increasing the total number of time steps that constitute the bulk of the process' computational load. As a result, an efficient time integration scheme greatly reduces the total CPU time demanded by such an analysis.
+
+Inverse problems are another class of candidates benefiting from efficient time integration and the lack of mesh generation. Adjoint-based dynamic inverse problems require repeated solutions on slightly modified models as part of an optimization loop. Since the optimization parameters are typically sensitive to changes in the solution, a consistently accurate method is paramount to achieving a convergent iteration, a task that automatic mesh generation is unsuitable for. A practical example is the shape optimization of heat dissipative structures.
+
+Another set of inverse problems are structural health monitoring methods, and full waveform inversion in particular. The goal of such processes is to reveal the internal geometry, often defects, of a model for which only the surface is available, and the solution at a set of sample points on it obtained from measurements. The objective of the optimization in this case is minimizing the difference between the computed solution and the measurements at all sample points by varying the internal geometry. The measurements correspond to the structure's response to high frequency excitation. The higher the frequency of excitation, the more detail internal defects can be detected in, but the smaller time steps must be in the simulation. Additionally, an appropriate representation of the structure's surface is not always available. For example, the geometry of heavily degraded buildings awaiting renovation is most conveniently captured with lidars, providing a point cloud as a surface representation.

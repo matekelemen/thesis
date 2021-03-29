@@ -12,7 +12,7 @@ In this section the spectral cell method is applied to a simple problem describe
 %______________________________________________________________________________
 %
 % SUB-SECTION
-\subsection{Axis-aligned bar}
+\subsection{Axis-aligned Bar}
 \label{section:axis_aligned_bar}
 %
 %______________________________________________________________________________
@@ -65,7 +65,7 @@ Time integration is performed using central differences described in \ref{subsec
 
 %______________________________________________________________________________
 % SUB-SUB-SECTION
-\subsubsection*{Fill ratio}
+\subsubsection*{Fill Ratio}
 \label{section:fill_ratio}
 %______________________________________________________________________________
 
@@ -303,7 +303,7 @@ In conclusion, neither lumping schemes are viable. An interesting property of bo
 
 %______________________________________________________________________________
 % SUB-SUB-SECTION
-\subsubsection*{Fictitious exponent}
+\subsubsection*{Fictitious Exponent}
 \label{section:fictitious_exponent}
 %______________________________________________________________________________
 
@@ -421,20 +421,156 @@ Although for this specific set of configurations, oscillations occur in a range 
 %______________________________________________________________________________
 %
 % SUB-SECTION
-\subsection{Rotated bar}
+\subsection{Rotated Bar}
 \label{section:rotated_bar}
 %
 %______________________________________________________________________________
 
+In this section, the bar is rotated by $45$ degrees relative to the mesh and embedded into a Cartesian domain of size $\frac{L_x + L_y}{\sqrt{2}} \times \frac{L_x + L_y}{\sqrt{2}} \times L_z$, discretized by $30 \times 30 \times 1$ identical cells with a basis order of $p=4$.
+The most important difference between the rotated and axis-aligned cases, is that the geometry cannot be exactly captured by a standard octree, leading to integration errors. By increasing the octree's depth, this error can be arbitrarily reduced at the expense of an exponential increase in complexity. As a compromise between accuracy and performance, the maximum depth is set to $r=p+1=5$.
+All other parameters are identical to the ones used in previous examples.
 
+In practical implementations, cells entirely in the fictitious domain are filtered out as they are not part of the original problem and add superfluous degrees of freedom, increasing the computational load. In this example, the solution in the fictitious domain is also of interest, hence such cells are left in the model as well. The resulting mesh contains uncut cells fully in one of the domains, cells cut roughly in half, and badly cut cells that have a small region of physical domain around one of their corners.
+
+%\begin{figure}[!h]
+%	\centering
+%	\includegraphics[height=5cm]{figures/paraview_rotated/mesh}
+%	\caption{Rotated bar embedded in a Cartesian mesh.}
+%	\label{fig:rotated_bar_mesh}
+%\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=0.8\textwidth]{figures/paraview_rotated/legend_physical}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=0.8\textwidth]{figures/paraview_rotated/legend_fictitious}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_rotated/animation.0002}}
+		\caption{$t=0.08$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_rotated/animation.0003}}
+		\caption{$t=0.12$}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_rotated/animation.0004}}
+		\caption{$t=0.16$}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_rotated/animation.0005}}
+		\caption{$t=0.20$}
+	\end{subfigure}
+	\caption{Displacement fields of the rotated bar example at different time points. Note, that the physical and fictitious domains have separate ranges and color maps on account of large differences in magnitude.}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[height=4cm]{figures/paraview_rotated/displacements}
+	\caption{Displacement history at the two sample points of the rotated bar.}
+	\label{fig:rotated_bar_dislacements}
+\end{figure}
+
+Similarly to the axis-aligned cases, spurious oscillations are observed in the physical domain, and the range of displacements in the fictitious domain is roughly an order of magnitude greater. As shown in figure \ref{fig:rotated_bar_extended_cross_section}, the displacement of cut cells sharply increases in magnitude in regions opposite the physical domain. The solution in these areas vary greatly across adjacent cells and oscillate seemingly indefinitely after the wave passes, disturbing the solution in the physical domain.
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_rotated/plot_over_line_location}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_rotated/plot_over_line}}
+	\end{subfigure}
+	\caption{Displacement along an extended cross-section of the bar, cutting elements along their diagonals.}
+	\label{fig:rotated_bar_extended_cross_section}
+\end{figure}
 
 %______________________________________________________________________________
 %
 % SUB-SECTION
-\subsection{Complex geometry}
+\subsection{Complex Geometry}
 \label{section:complex_geometry}
 %
 %______________________________________________________________________________
 
-The examples so far offered little variety in cell boundary shapes and fill ratios, which may bias the conclusions drawn from their results. To see how the method with HRZ lumping performs in a more practical setting, a geometrically more complex model is studied that provides a variety of fill ratios.
+The examples so far offered little variety in cell boundary shapes and fill ratios, which may bias the conclusions drawn from their results. To see how the method with HRZ lumping performs in a more practical setting, a geometrically more complex model is studied that provides a variety of fill ratios. The model is similar to the ones before, but instead of a bar, the wavelet is sent down the longest axis of an ellipsoid cut in half, defined as:
 
+\begin{equation} \label{eq:ellipsoid_definition}
+	\Omega_p = \left\{
+		\mathbf x \left|
+			x \leq 1
+			\ \ \land \ \
+			\left( \cfrac{x-1}{1} \right)^2
+			+ \left( \cfrac{y-0.2}{0.2} \right)^2
+			+ \left( \cfrac{z-0.1}{0.1} \right)^2
+			\leq 1
+		\right.
+	\right\}
+\end{equation}
+
+In order to compensate for the sharp changes in curvature at the tip of the ellipsoid, the source's shape $f_x$ is slightly modified to decay less abruptly:
+
+\begin{equation} \label{eq:ellipsoid_source}
+f(\mathbf x,t) = \begin{cases}
+e^{-10^3x^2} sin \left( \frac{2 \pi}{T} t \right) & t \in \left[ 0,\frac{T}{2} \right] \land \mathbf x \in \Omega_p \\[0.5em]
+0 & \text{otherwise} \\
+\end{cases}
+\end{equation}
+
+\begin{figure}[!h]
+	\centering
+	\hspace*{3cm}\includegraphics[height=3.5cm]{figures/paraview_ellipsoid/geometry}
+	\caption{Geometry of the physical domain.}
+	\label{ref:ellipsoid_geometry}
+\end{figure}
+
+The Cartesian embedding domain $\Omega = [0, \ 1] \times [0, \ 0.4] \times [0, \ 0.2]$ is discretized by a $60 \times  24 \times 12$ mesh of cells with a Lagrange basis of order $p=4$. Cells fully in the fictitious domain are neglected. The distribution of cells' fill ratios is shown in figure \ref{fig:ellipsoid_fill_ratio_histogram}, indicating that most cells are uncut and the rest have diverse fill ratios. The mass matrices of uncut cells are integrated with a fifth order Gauss-Lobatto quadrature, while an adaptive scheme with Gauss-Legendre quadrature of order $m=5$ is applied to cut cells, then lumped using the HRZ procedure. A reference solution without lumping is computed as well.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[height=5.5cm]{figures/ellipsoid_fill_ratio_histogram}
+	\caption{Histogram of the cells' fill ratios.}
+	\label{fig:ellipsoid_fill_ratio_histogram}
+\end{figure}
+
+Similarly to the bar example, the displacement history is sampled at two points $P_0$ and $P_1$ that trisect the major axis of the half-ellipsoid. Furthermore, a marching cube algorithm is used to recover the geometry's surface and interpolate the solution field on it.
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}{0.95\textwidth}
+		\centering
+		\includegraphics[width=0.45\textwidth]{figures/paraview_ellipsoid/displacement_history_legend}
+	\end{subfigure}
+	%\vfill
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/hrz/displacement_history}}
+		\caption{HRZ lumping}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/none/displacement_history}}
+		\caption{no lumping}
+	\end{subfigure}
+	\caption{Displacement histories at the two sample points on the ellipsoid's major axis with HRZ lumping (left) and without lumping (right).}
+	\label{fig:ellipsoid_displacement_history}
+\end{figure}
+
+As figure \ref{fig:ellipsoid_displacement_history} shows, the spurious oscillations originating from cut cells are similar to the ones in the bar examples, and are superposed on the traveling wavelet.

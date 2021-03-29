@@ -74,5 +74,6 @@ if __name__=="__main__":
             linewidth=1.0
         )
 
-    pyplot.savefig( "ellipsoid_fill_ratio_histogram.eps", format="eps" )
+    figure.tight_layout()
+    figure.savefig( "ellipsoid_fill_ratio_histogram.eps", format="eps" )
     pyplot.show()
