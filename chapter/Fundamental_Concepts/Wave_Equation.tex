@@ -72,7 +72,7 @@ The spatial discretization is carried out by approximating the solution field an
 	+
 	\int_{\Omega} \sum_i \left( \nabla N_i \hat v_i \right)^T E \sum_j \nabla N_j \hat u_j \ d \mathbf x
 	=
-	\int_{\Omega} f \sum_i N_i \hat v_i d \mathbf x
+	f_t \int_{\Omega} f_x \sum_i N_i \hat v_i d \mathbf x
 \end{equation}
 
 Since the weak form \ref{eq:wave_equation_weak_form} must hold for any $v \in V_h$, equation \ref{eq:wave_equation_spatially_discretized_test} has to hold for all combinations of $\hat v_i$ as well, leading to the spatially discretized form of the wave equation:
@@ -85,7 +85,7 @@ Since the weak form \ref{eq:wave_equation_weak_form} must hold for any $v \in V_
 	f_t \int_{\Omega} f_x N_i d \mathbf x
 \end{equation}
 
-The mass matrix $\mathbf M$, stiffness matrix $\mathbf K$ and load vector $\mathbf f$ appear in \ref{eq:wave_equation_spatially_discretized}.
+The mass matrix $\mathbf M$, stiffness matrix $\mathbf K$ and load vector $\mathbf f$ appear in equation \ref{eq:wave_equation_spatially_discretized}.
 
 \begin{equation} \label{eq:wave_equation_structural_components}
 M_{ij} \cfrac{\partial^2 \hat u_j}{\partial t^2}

@@ -37,7 +37,7 @@ The diagonal entries of an element mass matrix $M_{ii}^{e,RS}$ using the row-sum
 
 \begin{equation} \label{eq:rowsumlumping}
 	\begin{array}{rl}
-	M_{i}^{e,RS}
+	M_{ii}^{e,RS}
 	
 	&= \sum_k \int_{\Omega^e} N_i \rho N_k d\Omega \\[0.5em]
 	&= \sum_k M_{ik}^e
@@ -76,9 +76,7 @@ to that of an uncut cell, whose density is scaled by the considered cell's mass 
 \end{equation}
 
 As a result, the geometric information on the boundary between the physical
-and fictitious domains is lost in the process. Moreover, defining the density
-outside the physical domain might not be straightforward for complex models, but
-this issue is not addressed in the thesis as a constant density is assumed.
+and fictitious domains is lost in the process. Moreover, this technique involves extrapolating the density of the physical domain to the fictitious regions of cut cells, a trivial task for constant densities but problematic otherwise.
 
 Compared to row-summing, this scheme imposes the additional overhead of having
 to compute an extra mass matrix of an uncut cell, and it cannot be performed
@@ -127,8 +125,8 @@ be computed from the sum of all components in the element mass matrix.
 \end{equation}
 
 
-Functions in an ansatz space constructed from the tensor product of basis functions
-retain partition of unity:
+As shown below, functions in an ansatz space constructed from the tensor product of basis functions
+retain a partition of unity:
 
 \begin{equation*}
 \begin{array}{rll}

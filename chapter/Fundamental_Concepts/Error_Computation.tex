@@ -7,9 +7,9 @@
 %
 %______________________________________________________________________________
 
-Quantifying the quality of a numerical solution to a dynamic system is not a straightforward task, mostly because different types of errors have varying importance depending on the goal of the analysis. In linear wave propagation problems, the main error types include dispersion and spurious oscillations, both of which have an accumulative nature in time. To streamline the analysis of these errors a simple 1D wave propagation problem is considered, shown in figure \ref{fig:toy_problem}.
+Quantifying the quality of a numerical solution to a dynamic system is not a straightforward task, mostly because different types of errors have varying importance depending on the goal of the analysis. In linear wave propagation problems, the main error types include dispersion and spurious oscillations, both of which have an accumulative nature in time. To streamline the analysis of these errors, a simple 1D wave propagation problem is considered, shown in figure \ref{fig:toy_problem}.
 
-A distributed source $f(x,t)$ is applied on a 1D bar of length $L=0.5$ with homogeneous Neumann conditions on both ends, resulting in a single half-wave traveling in positive $x$-direction. In order to minimize disturbances originating from boundaries and the source, displacements are recorded at two sample points $P_0$ and $P_1$ that divide the bar into 3 equidistant segments. The material of the bar is linear with a constant Young's modulus $E=1$ and density $\rho=1$, resulting in a unit wave speed $c=\sqrt{E / \rho}=1$. To avoid reflections on the right hand side boundary, the observation is terminated at $t_{end}=L/c$.
+A distributed source $f(x,t)$ is applied on a 1D bar of length $L=0.5$ with homogeneous Neumann conditions on both ends, resulting in a single half-wave of period $T$ traveling in positive $x$-direction. In order to minimize disturbances originating from boundaries and the source, displacements are recorded at two sample points $P_0$ and $P_1$ that divide the bar into 3 equidistant segments. The material of the bar is linear with a constant Young's modulus $E=1$ and density $\rho=1$, resulting in a unit wave speed $c=\sqrt{E / \rho}=1$. To avoid reflections on the right hand side boundary, the observation is terminated at $t_{max}=L/c$.
 
 \begin{equation} \label{eq:toy_problem_source}
 	f(x,t) = \begin{cases}
@@ -20,7 +20,7 @@ A distributed source $f(x,t)$ is applied on a 1D bar of length $L=0.5$ with homo
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[height=1.5cm]{pictures/figures/toy_problem.png}
+	\includegraphics[height=1.8cm]{pictures/figures/toy_problem.png}
 	\caption{Simple 1D bar with two sample points.}
 	\label{fig:toy_problem}
 \end{figure}

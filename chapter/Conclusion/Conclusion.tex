@@ -19,4 +19,4 @@ The most important shortcoming of HRZ lumping is the fact that it introduces an 
 
 As none of the mentioned approaches to diagonalization yield satisfactory results, further research is encouraged to evaluate other lumping schemes, or address the accuracy of moment fitting.
 
-It is important to note, that although adequate diagonal mass matrices of cut cells could not be derived, global mass matrices with only few non-zero off-diagonal entries still lead to superior performance at time stepping when using direct linear solvers. As a result, the SCM without lumping offers faster time integration than the FCM, with similar accuracy and convergence.
+It is important to note, that although adequate diagonal mass matrices of cut cells could not be derived, global mass matrices with only few non-zero off-diagonal entries still lead to superior performance at time stepping when using direct linear solvers. As a result, on models with a relatively small ratio of cut cells the SCM without lumping offers faster time integration than the FCM, while providing similar accuracy and convergence.

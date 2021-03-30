@@ -7,7 +7,7 @@
 %
 %______________________________________________________________________________
 
-In this section the spectral cell method is applied to a simple problem described in \ref{section:error_calculation} with different discretizations and embeddings, and then to an example with a more complex geometry that has a cell distribution more resembling a practical application. For the simple case, approaches without lumping, with density scaling, and with HRZ lumping are compared.
+In this section the spectral cell method is applied on a simple problem described in \ref{section:error_calculation} with different discretizations and embeddings, and then to an example with a more complex geometry that has a cell distribution more resembling a practical application. For the simple case, approaches without lumping, with density scaling, and with HRZ lumping are compared. All computations are carried out using a modified version of AdhoC++, an in-house high order finite element method developed at the chair of Computational Modeling and Simulation at the Technical University of Munich.
 
 %______________________________________________________________________________
 %
@@ -32,7 +32,7 @@ The distributed source defined in equation \ref{eq:toy_problem_source} is extend
 
 \begin{equation} \label{eq:axis_aligned_source}
 	f(\mathbf x,t) = \begin{cases}
-	e^{-10^4x^2} sin \left( \frac{2 \pi}{T} t \right) & t \in \left[ 0,\frac{T}{2} \right] \land \mathbf x \in \Omega_p \\[0.5em]
+	e^{-10^4x^2} sin \left( \frac{2 \pi}{T} t \right) & t \in \left[ 0,\frac{T}{2} \right], \ \mathbf x \in \Omega_p \\[0.5em]
 	0 & \text{otherwise} \\
 	\end{cases}
 \end{equation}
@@ -194,7 +194,11 @@ Figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz} shows the displacement 
 	\label{fig:aligned_bar_fill_ratio_displacement_hrz}
 \end{figure}
 
-Figure \ref{fig:fill_ratio_hrz_displacement_field} compares the displacement field with HRZ lumping to the solution without lumping at different time points, for the setup $r=1$ and $p=4$. The solution without lumping can be regarded as reference, and as expected, the displacement is constant in $y$-direction, even in the fictitious domain. The wavelet propagates in the $x$-direction without skewing, and no reflections occur on the boundary between the physical and fictitious domains. In contrast, HRZ lumping introduces a variance in the $y$-direction. It is important to note that for better visibility, the displacement color range is adjusted for magnitudes in the physical domain $\pm 7\cdot 10^{-5}$, but this range is almost an order of magnitude greater in the fictitious domain $\pm 2.5 \cdot 10^{-4}$. Furthermore, the wave speed appears to differ in $\Omega_f$ which leads to a wave front propagating in $y$-direction, endlessly reflected between the boundary of the domains and the mesh. Due to the artificial coupling between the physical and fictitious domains introduced by HRZ lumping, these waves propagate into the physical domain as well, albeit with reduced amplitude. The resulting spurious oscillations can be clearly observed in the displacement history of the sample points as well, shown in figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz_r1_p4}. Their magnitude, frequency, and phase relative to wavelet depend on the size of the fictitious domain and the material properties inside it, defined by $\beta$.
+Figure \ref{fig:fill_ratio_hrz_displacement_field} compares the displacement field with HRZ lumping to the solution without lumping at different time points, for the setup $r=1$ and $p=4$. The solution without lumping can be regarded as reference, and as expected, the displacement is constant in $y$-direction, even in the fictitious domain. The wavelet propagates in the $x$-direction without skewing, and no reflections occur on the boundary between the physical and fictitious domains. 
+In contrast, HRZ lumping introduces a variance in the $y$-direction. It is important to note that for better visibility, the displacement color range is adjusted for magnitudes in the physical domain $\pm 7\cdot 10^{-5}$, but this range is almost an order of magnitude greater in the fictitious domain $\pm 2.5 \cdot 10^{-4}$.
+Furthermore, the wave speed appears to differ in $\Omega_f$ which leads to a wave front propagating in $y$-direction, endlessly reflected between the boundary of the domains and the mesh. 
+In the FCM, the displacement magnitudes in $\Omega_f$ must be comparable to  $10^{\beta}$ in order to have notable effect on the solution in the physical domain.
+Due to the artificial coupling between the physical and fictitious domains introduced by HRZ lumping however, the waves originating from $\Omega_f$ propagate into the physical domain as well, albeit with reduced amplitude. The resulting spurious oscillations can be clearly observed in the displacement history of the sample points as well, shown in figure \ref{fig:aligned_bar_fill_ratio_displacement_hrz_r1_p4}. Their magnitude, frequency, and phase relative to wavelet depend on the size of the fictitious domain and the material properties inside it, defined by $\beta$.
 
 \begin{figure}[!h]
 	\centering
@@ -257,7 +261,9 @@ Figure \ref{fig:fill_ratio_hrz_displacement_field} compares the displacement fie
 	\label{fig:fill_ratio_hrz_displacement_field}
 \end{figure}
 
-Finally, density scaling is studied for the same setup. Considering that it similar to HRZ lumping but makes more simplifications, the fact that it performs worse is not surprising. However, an interesting property can be observed in the displacement histories that may help better understand why neither lumping schemes are viable. Originally, both the density $\rho$ and Young's modulus $E$ are multiplied by $10^{-\beta}$ in the fictitious domain, which means that the wave speed remains constant over the entirety of the model. As mentioned in \ref{subsection:density_scaling_lumping} however, density scaling imposes a uniform mass distribution on cut cells. Apart from introducing an artificial coupling between domains similar to HRZ lumping, this means that the effective wave speed becomes higher in the physical domain while lower in the fictitious one. Furthermore, this speed difference varies from cell to cell, depending on their individual fill ratios. Though combined with other errors, this behaviour is well demonstrated in figure \ref{fig:aligned_bar_fill_ratio_displacement_density_scaling}. As the fill ratio decreases, the propagating wavelet becomes faster in the physical domain. For fill ratios of $\eta=\frac{1}{8}$ and $\eta=\frac{1}{16}$, the wave is reflected from the right boundary and even reaches $P_2$ on its way back before $t_{max}$.
+In an attempt to dispose of the solution's variance in y-direction, a model with the source term $f$ extended to the fictitious domain and multiplied by the indicator function $\alpha$ was studied as well, but yielded similar results.
+
+Finally, density scaling is studied for the same setup. Considering that it similar to HRZ lumping but with more simplifications, the fact that it performs worse is not surprising. However, an interesting property can be observed in the displacement histories that may help better understand why neither lumping schemes are viable. Originally, both the density $\rho$ and Young's modulus $E$ are multiplied by $10^{-\beta}$ in the fictitious domain, which means that the wave speed remains constant over the entirety of the model. As mentioned in \ref{subsection:density_scaling_lumping} however, density scaling imposes a uniform mass distribution on cut cells. Apart from introducing an artificial coupling between domains similar to HRZ lumping, this means that the effective wave speed becomes higher in the physical domain while lower in the fictitious one. Furthermore, this speed difference varies from cell to cell, depending on their individual fill ratios. Though combined with other errors, this behaviour is well demonstrated in figure \ref{fig:aligned_bar_fill_ratio_displacement_density_scaling}. As the fill ratio decreases, the propagating wavelet becomes faster in the physical domain. For fill ratios of $\eta=\frac{1}{8}$ and $\eta=\frac{1}{16}$, the wave is reflected from the right boundary and even reaches $P_2$ on its way back before $t_{max}$.
 
 \begin{figure}[!h]
 	\centering
@@ -307,9 +313,9 @@ In conclusion, neither lumping schemes are viable. An interesting property of bo
 \label{section:fictitious_exponent}
 %______________________________________________________________________________
 
-Introduced in equation \ref{eq:indicator_function}, the fictitious exponent $\beta$ defines the relation between the material parameters in the physical and fictitious domains. Its original purpose in the FCM is to avoid ill conditioned structural matrices for badly cut cells. Small values lead to more stable numerics but less accurate physics, thus one has to find an optimal compromise between the two types of errors. That said, there is no detailed study on its effect, and its value is often arbitrarily chosen between 3 and 10 \cite{Parvizian2007}. Due to lumping however, the solution in the fictitious domain has a greater impact, making $\beta$ more important in the SCM.
+Introduced in equation \ref{eq:indicator_function}, the fictitious exponent $\beta$ defines the relation between the material parameters in the physical and fictitious domains. Its original purpose in the FCM is to avoid ill conditioned structural matrices for badly cut cells. Small values lead to more stable numerics but less accurate physics, thus one has to find an acceptable compromise between the two types of errors. That said, there is no detailed study on its effect, and its value is often arbitrarily chosen between 3 and 10 \cite{Parvizian2007}. Due to lumping however, the solution in the fictitious domain has a greater impact, making $\beta$ more important in the SCM.
 
-In the following examples, the fill ratio $\eta = \frac{1}{4}$ and basis order $p=4$ remain constant while the $\beta$ varies between 0 and 10. Since the focus is now on the residual oscillations, the time of arrival is computed based on the envelope of the displacement history. The specifics of this process and reason for doing so is discussed in \ref{section:error_calculation}.
+In the following examples, the fill ratio $\eta = \frac{1}{4}$ and basis order $p=4$ remain constant while the $\beta$ varies between 0 and 10. Since the focus is on the residual oscillations in this case, the time of arrival is computed based on the envelope of the displacement history. The specifics of this process and reason for doing so is discussed in \ref{section:error_calculation}.
 
 Figure \ref{fig:beta_convergence} shows how the resulting error changes with the fictitious exponent. At $\beta = 0$, the material in the two domains are identical, thus the stiffness and mass matrices are consistent. Lumping has minimal effect, and no oscillations occur in this case. In the range $\beta \in [2,\ 6]$ however, oscillations appear and vary in magnitude, frequency, and phase.
 
@@ -427,10 +433,10 @@ Although for this specific set of configurations, oscillations occur in a range 
 %______________________________________________________________________________
 
 In this section, the bar is rotated by $45$ degrees relative to the mesh and embedded into a Cartesian domain of size $\frac{L_x + L_y}{\sqrt{2}} \times \frac{L_x + L_y}{\sqrt{2}} \times L_z$, discretized by $30 \times 30 \times 1$ identical cells with a basis order of $p=4$.
-The most important difference between the rotated and axis-aligned cases, is that the geometry cannot be exactly captured by a standard octree, leading to integration errors. By increasing the octree's depth, this error can be arbitrarily reduced at the expense of an exponential increase in complexity. As a compromise between accuracy and performance, the maximum depth is set to $r=p+1=5$.
+The most important difference between the rotated and axis-aligned cases is that the geometry cannot be exactly captured by a standard octree, leading to integration errors. By increasing the octree's depth, this error can be arbitrarily reduced at the expense of an exponential increase in complexity. As a compromise between accuracy and performance, the maximum depth is set to $r=p+1=5$.
 All other parameters are identical to the ones used in previous examples.
 
-In practical implementations, cells entirely in the fictitious domain are filtered out as they are not part of the original problem and add superfluous degrees of freedom, increasing the computational load. In this example, the solution in the fictitious domain is also of interest, hence such cells are left in the model as well. The resulting mesh contains uncut cells fully in one of the domains, cells cut roughly in half, and badly cut cells that have a small region of physical domain around one of their corners.
+In practical implementations, cells entirely in the fictitious domain are filtered out as they are not part of the original problem and add superfluous degrees of freedom, increasing the computational load. In this example, the solution in the fictitious domain is also of interest, hence such cells are present in the model as well. The resulting mesh contains uncut cells fully in one of the domains, cells cut roughly in half, and badly cut cells that have a small region of physical domain around one of their corners.
 
 %\begin{figure}[!h]
 %	\centering
@@ -484,7 +490,7 @@ In practical implementations, cells entirely in the fictitious domain are filter
 	\label{fig:rotated_bar_dislacements}
 \end{figure}
 
-Similarly to the axis-aligned cases, spurious oscillations are observed in the physical domain, and the range of displacements in the fictitious domain is roughly an order of magnitude greater. As shown in figure \ref{fig:rotated_bar_extended_cross_section}, the displacement of cut cells sharply increases in magnitude in regions opposite the physical domain. The solution in these areas vary greatly across adjacent cells and oscillate seemingly indefinitely after the wave passes, disturbing the solution in the physical domain.
+Similarly to the axis-aligned cases, spurious oscillations are observed in the physical domain, and the range of displacements in the fictitious domain is roughly an order of magnitude greater. As shown in figure \ref{fig:rotated_bar_extended_cross_section}, the displacement of cut cells sharply increases in magnitude in regions opposite the physical domain. The solution in these areas vary greatly across adjacent cells and oscillate with little decay after the wave passes, disturbing the solution in the physical domain.
 
 \begin{figure}[!h]
 	\centering
@@ -540,7 +546,7 @@ e^{-10^3x^2} sin \left( \frac{2 \pi}{T} t \right) & t \in \left[ 0,\frac{T}{2} \
 	\label{ref:ellipsoid_geometry}
 \end{figure}
 
-The Cartesian embedding domain $\Omega = [0, \ 1] \times [0, \ 0.4] \times [0, \ 0.2]$ is discretized by a $60 \times  24 \times 12$ mesh of cells with a Lagrange basis of order $p=4$. Cells fully in the fictitious domain are neglected. The distribution of cells' fill ratios is shown in figure \ref{fig:ellipsoid_fill_ratio_histogram}, indicating that most cells are uncut and the rest have diverse fill ratios. The mass matrices of uncut cells are integrated with a fifth order Gauss-Lobatto quadrature, while an adaptive scheme with Gauss-Legendre quadrature of order $m=5$ is applied to cut cells, then lumped using the HRZ procedure. A reference solution without lumping is computed as well.
+The Cartesian embedding domain $\Omega = [0, \ 1] \times [0, \ 0.4] \times [0, \ 0.2]$ is discretized by a $60 \times  24 \times 12$ mesh of cells with a Lagrange basis of order $p=4$. Cells fully in the fictitious domain are neglected. The distribution of cells' fill ratios is shown in figure \ref{fig:ellipsoid_fill_ratio_histogram}, indicating that most cells are uncut and the rest have diverse fill ratios. The mass matrices of uncut cells are integrated with a fifth order Gauss-Lobatto quadrature, while an adaptive scheme with Gauss-Legendre quadrature of identical order is applied to cut cells, then lumped using the HRZ procedure. A reference solution without lumping is computed as well.
 
 \begin{figure}[!h]
 	\centering
@@ -625,4 +631,93 @@ Similarly to the bar example, the displacement history is sampled at two points 
 	\label{fig:ellipsoid_surface_displacement}
 \end{figure}
 
-As figure \ref{fig:ellipsoid_displacement_history} shows, the spurious oscillations originating from cut cells are similar to the ones in the bar examples, and are superposed on the traveling wavelet.
+As figure \ref{fig:ellipsoid_displacement_history} shows, the spurious oscillations originating from cut cells are similar to the ones in the bar examples, and are superposed on the reference solution. However, their influence is more modest due to relatively smaller element sizes, and fewer cut cells compared to uncut ones. Figure \ref{fig:ellipsoid_cross_section} shows the displacement history on the cross-section at $P_0$ between $t \in [0.67, \ 0.82]$, well after the wavelet passed. The solution in the fictitious domain is seen to persistently oscillate, even without notable excitation coming from the physical domain.
+
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=0.4\textwidth]{figures/paraview_ellipsoid/cross_section/legend}}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0067}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0068}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0069}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0070}}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0071}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0072}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0073}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0074}}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0075}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0076}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0077}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0078}}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0079}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0080}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0081}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.24\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/cross_section/animation.0082}}
+	\end{subfigure}
+	\caption{Displacement field on the cross-section of the ellipsoid at $P_0$ between $t=0.67$ and $t=0.82$ in increments of $\Delta t=0.01$.}
+	\label{fig:ellipsoid_cross_section}
+\end{figure}
