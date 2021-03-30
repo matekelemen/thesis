@@ -573,4 +573,56 @@ Similarly to the bar example, the displacement history is sampled at two points 
 	\label{fig:ellipsoid_displacement_history}
 \end{figure}
 
+\begin{figure}[!h]
+	\centering
+	\begin{subfigure}[b]{0.95\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=0.4\textwidth]{figures/paraview_ellipsoid/legend}}
+	\end{subfigure}
+	\vskip \baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/hrz/animation.0001}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/none/animation.0001}}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/hrz/animation.0002}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/none/animation.0002}}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/hrz/animation.0003}}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/none/animation.0003}}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/hrz/animation.0004}}
+		\caption{HRZ lumping}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\raisebox{-\height}{\includegraphics[width=\textwidth]{figures/paraview_ellipsoid/none/animation.0004}}
+		\caption{no lumping}
+	\end{subfigure}
+	\caption{Displacement fields on the surface of the ellipsoid at $t=\{0.2, \ 0.4, \ 0.6, \ 0.8\}$, computed with HRZ lumping (left) and no lumping as reference (right).}
+	\label{fig:ellipsoid_surface_displacement}
+\end{figure}
+
 As figure \ref{fig:ellipsoid_displacement_history} shows, the spurious oscillations originating from cut cells are similar to the ones in the bar examples, and are superposed on the traveling wavelet.

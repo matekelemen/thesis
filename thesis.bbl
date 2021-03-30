@@ -128,4 +128,13 @@ L.~Kudela, S.~Kollmannsberger, U.~Almac, E.~Rank.
 \newblock Direct structural analysis of domains defined by point clouds
 \newblock {\em},,2019
 
+\bibitem[A79]{Alifanov1979}
+O.M.~Alifanov.
+\newblock Inverse Heat Transfer Problems
+\newblock {\em},,1979
+
+\bibitem[BS94]{Babuska94}
+I.~Babu{\v s}ka, M.~Suri.
+\newblock The p and h-p Versions of the Finite Element Method, Basic Principles and Properties
+
 \end{thebibliography}

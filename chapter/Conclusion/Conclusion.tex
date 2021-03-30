@@ -7,7 +7,16 @@
 %
 %==============================================================================
 
-Give a brief review of the most important topics that were explained in detail!
-What advantages does the SCM have over the other methods mentioned?
-What are the SCM's drawbacks?
-Which aspects should be further explored?
+This thesis covers potential approaches to diagonalizing the mass matrices of cut cells in the spectral cell method, including moment fitting and different mass lumping schemes. Various examples and evaluation methods are presented as well, revealing mixed results and the need for further research in this field.
+
+After covering the relevant theoretical background of the SCM's roots, the finite cell method and the spectral element method, the mass matrices of cut cells are identified as the critical subject to focus on, as they contain non-zero off-diagonal entries. Without changing the basis functions of such elements, the two possible approaches of addressing the issue are either modifying the numerical integration scheme to lead to an inherently diagonal matrix, or applying a lumping scheme to the non-diagonal mass matrix after it is computed.
+
+Although moment fitting preserves the consistent nature of the mass matrix, its reduced integration accuracy can lead to negative masses and a divergent solution in time. Used successfully for the linear FEM, row sum lumping suffers from the same issue at higher basis orders, rendering both approaches infeasible for use in the SCM.
+
+The remaining two lumping schemes, density scaling and HRZ lumping, guarantee the positive-definiteness of the mass matrix. Even though both of these techniques were successfully applied to 2D models of linear elasticity in the literature \cite{Joulaian2014}, accurate results for 3D models of the acoustic wave equation could not be achieved in this thesis, hinting at the fact that these approaches have limited applicability. Both schemes are similar in nature but HRZ lumping is shown to produce less errors than density scaling.
+
+The most important shortcoming of HRZ lumping is the fact that it introduces an artificial coupling between the physical and fictitious domains in cut cells, leading to spurious oscillations propagating into the rest of the model. Furthermore, displacement magnitudes become amplified in the fictitious domain.
+
+As none of the mentioned approaches to diagonalization yield satisfactory results, further research is encouraged to evaluate other lumping schemes, or address the accuracy of moment fitting.
+
+It is important to note, that although adequate diagonal mass matrices of cut cells could not be derived, global mass matrices with only few non-zero off-diagonal entries still lead to superior performance at time stepping when using direct linear solvers. As a result, the SCM without lumping offers faster time integration than the FCM, with similar accuracy and convergence.
